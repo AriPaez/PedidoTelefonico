@@ -20,9 +20,9 @@ public class LoginRegistro {
 	
 	
 	
-	public void login()
+	public boolean login()
 	{
-		
+		return true;
 	}
 	
 	

@@ -37,19 +37,23 @@ public class Login extends JFrame {
 		getContentPane().add(laminaPrincipal);
 		laminaPrincipal.setLayout(null);
 		
-		JLabel labelLogin = new JLabel("LOGIN");
-		labelLogin.setFont(new Font("Arial", Font.BOLD, 30));
-		labelLogin.setBounds(100, 11, 94, 24);
-		laminaPrincipal.add(labelLogin);
-		
 		dni= new JTextField();
 		dni.setBounds(28, 107, 249, 22);
 		laminaPrincipal.add(dni);
+		
+		password = new JPasswordField();
+		password.setBounds(28, 209, 245, 20);
+		laminaPrincipal.add(password);
 		
 		JLabel labelDni = new JLabel("DNI");
 		labelDni.setFont(new Font("Arial", Font.BOLD, 20));
 		labelDni.setBounds(28, 70, 94, 24);
 		laminaPrincipal.add(labelDni);
+		
+		JLabel labelLogin = new JLabel("LOGIN");
+		labelLogin.setFont(new Font("Arial", Font.BOLD, 30));
+		labelLogin.setBounds(100, 11, 94, 24);
+		laminaPrincipal.add(labelLogin);
 		
 		JLabel labelContrasenia = new JLabel("Contrase\u00F1a");
 		labelContrasenia.setFont(new Font("Arial", Font.BOLD, 20));
@@ -81,10 +85,6 @@ public class Login extends JFrame {
 		label.setIcon(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\login\\logotipo.png"));
 		label.setBounds(286, 0, 332, 368);
 		laminaPrincipal.add(label);
-		
-		password = new JPasswordField();
-		password.setBounds(28, 209, 245, 20);
-		laminaPrincipal.add(password);
 	
 		ControlLogin cL=new ControlLogin(this);
 		
