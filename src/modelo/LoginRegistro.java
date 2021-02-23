@@ -7,10 +7,12 @@ public class LoginRegistro {
 	
 	public Login login;
 	public Registro registro;
+	public ConexionBBDD conexionBBDD;
 	
 	public LoginRegistro(Login l)
 	{
 		login=l;
+		conexionBBDD=new ConexionBBDD();
 	}
 	
 	public LoginRegistro(Registro r)

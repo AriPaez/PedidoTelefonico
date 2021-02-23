@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import modelo.LoginRegistro;
+import vista.Empleado;
 import vista.Login;
 import vista.Registro;
 
@@ -27,7 +28,17 @@ public class ControlLogin implements ActionListener {
 		
 		if(botonElegido==login.getLogin())
 		{
-			loginRegistro.login();
+			boolean sesion;
+			sesion=loginRegistro.login();
+			
+			if(sesion)
+			{
+				JFrame emp=new Empleado();
+				emp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				emp.setVisible(true);
+			}
+			
+			
 		}
 		else
 		{
