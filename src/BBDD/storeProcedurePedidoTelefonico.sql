@@ -1,6 +1,6 @@
 --Iniciar sesion 
 
-ALTER PROCEDURE iniciarSesion(@dni VARCHAR(8),@contrasenia VARCHAR(30))
+ALTER PROCEDURE iniciarSesion(@dni VARCHAR(8),@contrasenia VARBINARY(MAX))
 AS
 BEGIN TRY
 
@@ -21,7 +21,7 @@ BEGIN TRY
 	ELSE
 	BEGIN
 		 SELECT dniEmpleado FROM empleado WHERE dniEmpleado=@dni
-		 AND contrasenia=@contrasenia
+		 AND PWDCOMPARE(contrasenia,@contrasenia)=1
 	END
 END TRY
 BEGIN CATCH
