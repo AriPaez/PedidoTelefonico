@@ -8,6 +8,18 @@ BEGIN TRY
 	BEGIN
 		RAISERROR('EL NÚMERO DE DNI DEBE SER DE 8 DÍGITOS',14,1)
 	END
+	ELSE IF (@contrasenia='' AND @dni='')
+	BEGIN
+		RAISERROR('ERROR. CAMPOS VACÍOS',14,1)
+	END
+	ELSE IF (@contrasenia='')
+	BEGIN
+		RAISERROR('ERROR. INGRESE CONTRASEÑA',14,1)
+	END
+	ELSE IF (@dni='')
+	BEGIN
+		RAISERROR('ERROR. INGRESE DNI',14,1)
+	END
 	ELSE IF (ISNUMERIC(@contrasenia)=0)
 	BEGIN
 		RAISERROR('ERROR. EL NÚMERO DE DNI DEBE ENTERO',14,1)
@@ -21,7 +33,7 @@ BEGIN TRY
 	ELSE
 	BEGIN
 		 SELECT dniEmpleado FROM empleado WHERE dniEmpleado=@dni
-		 AND PWDCOMPARE(contrasenia,@contrasenia)=1
+		 AND contrasenia=HASHBYTES('SHA2_512',@dni)
 	END
 END TRY
 BEGIN CATCH
@@ -31,13 +43,25 @@ BEGIN CATCH
 END CATCH
 
 --registrar empleado
-CREATE PROCEDURE registrarEmpleado(@dni VARCHAR(8),@contrasenia VARBINARY(MAX))
+ALTER PROCEDURE registrarEmpleado(@dni VARCHAR(8),@contrasenia VARBINARY(MAX))
 AS
 BEGIN TRY
 
 	IF(LEN(@dni)<>8)
 	BEGIN
 		RAISERROR('EL NÚMERO DE DNI DEBE SER DE 8 DÍGITOS',14,1)
+	END
+	ELSE IF (@contrasenia='' AND @dni='')
+	BEGIN
+		RAISERROR('ERROR. CAMPOS VACÍOS',14,1)
+	END
+	ELSE IF (@contrasenia='')
+	BEGIN
+		RAISERROR('ERROR. INGRESE CONTRASEÑA',14,1)
+	END
+	ELSE IF (@dni='')
+	BEGIN
+		RAISERROR('ERROR. INGRESE DNI',14,1)
 	END
 	ELSE IF (ISNUMERIC(@contrasenia)=0)
 	BEGIN
@@ -53,7 +77,7 @@ BEGIN TRY
 	 INSERT INTO empleado
 			   (dniEmpleado
 			   ,contrasenia)
-		 VALUES(@dni,PWDENCRYPT(@contrasenia))
+		 VALUES(@dni, HASHBYTES('SHA2_512',@dni))
 	END
 END TRY
 BEGIN CATCH
