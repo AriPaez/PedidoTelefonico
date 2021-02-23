@@ -18,9 +18,16 @@ BEGIN TRY
 		RAISERROR('ERROR. NO EXISTE NINGUNA CUENTA ASOCIADA
 		AL DNI INGRESADO',14,1)
 	END
+	ELSE
+	BEGIN
+		 SELECT dniEmpleado FROM empleado WHERE dniEmpleado=@dni
+		 AND contrasenia=@contrasenia
+	END
 END TRY
 BEGIN CATCH
 	DECLARE @mensajeDeError VARCHAR(100)
 	SELECT @mensajeDeError=ERROR_MESSAGE()
 	RAISERROR (@mensajeDeError,14,1)
 END CATCH
+
+--registrar empleado
