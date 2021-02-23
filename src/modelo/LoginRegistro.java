@@ -61,19 +61,17 @@ public class LoginRegistro {
 
 	public void registrar() {
 		
-		CallableStatement iniciarSesion;
+		CallableStatement registrar;
 		ResultSet tabla;
 		try
 		{
-			iniciarSesion = conexionBBDD.getConexionBBDD()
+			registrar = conexionBBDD.getConexionBBDD()
 			.prepareCall("{call iniciarSesion(?,?)}");
 			
-			iniciarSesion .setString(1,login.getDni());
-			iniciarSesion .setString(2,login.getPassword());
+			registrar .setString(1,login.getDni());
+			registrar .setString(2,login.getPassword());
 			 
-			
-			tabla=iniciarSesion.executeQuery();
-			 
+			registrar.execute();
 			 
 			
 		}
