@@ -1,9 +1,19 @@
 package vista;
 
-import javax.swing.*;
-import java.awt.Font;
 import java.awt.Color;
-import java.awt.TextField;
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import controlador.ControlLogin;
 
 public class Login extends JFrame {
 	
@@ -62,8 +72,9 @@ public class Login extends JFrame {
 		laminaPrincipal.add(registrar);
 		
 		JSeparator separator = new JSeparator();
+		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(283, 0, 8, 379);
+		separator.setBounds(283, 0, 8, 368);
 		laminaPrincipal.add(separator);
 		
 		JLabel label = new JLabel("");
@@ -74,8 +85,14 @@ public class Login extends JFrame {
 		password = new JPasswordField();
 		password.setBounds(28, 209, 245, 20);
 		laminaPrincipal.add(password);
-		 
-
+	
+		ControlLogin cL=new ControlLogin(this);
+		
+		//Eventos botones.
+		this.login.addActionListener(cL);
+		this.registrar.addActionListener(cL);
+		
+		
 	}
 
 	public String getPassword() {
