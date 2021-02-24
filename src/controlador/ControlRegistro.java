@@ -27,6 +27,7 @@ public class ControlRegistro implements ActionListener {
 		
 		if(botonElegido==registro.getRegistrar())
 		{
+			loginRegistro.registrarEmpleado();
 			
 		}
 		else

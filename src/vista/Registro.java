@@ -13,81 +13,115 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import controlador.ControlLogin;
+import controlador.ControlRegistro;
 
 public class Registro extends JFrame {
 
 	private JPasswordField password;
 	private JButton registrar;
 	private JTextField dni;
-	private JButton cancelar ;
-	
+	private JButton cancelar;
+	 
 	public Registro() {
+
 		// Caracteristicas de la ventana.
-		setTitle("Registro Usuario");
-		setSize(634, 409);
+		setTitle("Registro");
+		setSize(288, 345);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		getContentPane().setLayout(null);
 
 		JPanel laminaPrincipal = new JPanel();
-		laminaPrincipal.setBackground(new Color(135, 206, 250));
-		laminaPrincipal.setBounds(0, 0, 618, 370);
+		laminaPrincipal.setBackground(Color.decode("#41bbec"));
+		laminaPrincipal.setBounds(0, 0, 272, 312);
 		getContentPane().add(laminaPrincipal);
 		laminaPrincipal.setLayout(null);
 
-		JLabel labelLogin = new JLabel("REGISTRO");
-		labelLogin.setFont(new Font("Arial", Font.BOLD, 30));
-		labelLogin.setBounds(65, 11, 177, 24);
-		laminaPrincipal.add(labelLogin);
-
-		dni = new JTextField();
-		dni.setBounds(28, 107, 249, 22);
-		laminaPrincipal.add(dni);
+		JLabel labelLoginIcon = new JLabel("");
+		labelLoginIcon.setIcon(new ImageIcon(
+				"C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\login\\loginIcona.png"));
+		labelLoginIcon.setBounds(110, 37, 50, 56);
+		laminaPrincipal.add(labelLoginIcon);
 
 		JLabel labelDni = new JLabel("DNI");
 		labelDni.setFont(new Font("Arial", Font.BOLD, 20));
-		labelDni.setBounds(28, 70, 94, 24);
+		labelDni.setBounds(28, 92, 94, 24);
 		laminaPrincipal.add(labelDni);
+
+		dni = new JTextField();
+		dni.setBounds(16, 126, 234, 22);
+		laminaPrincipal.add(dni);
+
+		password = new JPasswordField();
+		password.setBounds(16, 207, 234, 24);
+		laminaPrincipal.add(password);
+
+		JLabel labelRegistro = new JLabel("REGISTRO");
+		labelRegistro.setFont(new Font("Arial", Font.BOLD, 30));
+		labelRegistro.setBounds(63, 2, 162, 24);
+		laminaPrincipal.add(labelRegistro);
 
 		JLabel labelContrasenia = new JLabel("Contrase\u00F1a");
 		labelContrasenia.setFont(new Font("Arial", Font.BOLD, 20));
 		labelContrasenia.setBounds(28, 172, 116, 24);
 		laminaPrincipal.add(labelContrasenia);
 
-		registrar = new JButton("Registrarse");
+		cancelar = new JButton(new ImageIcon(
+				"C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\login\\botonLoginSeleccion.png"));
+		cancelar.setRolloverIcon(new ImageIcon(
+				"C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telefónicos\\pedidoTelefonico\\src\\icon\\login\\botonLoginDeteccionMouse.png"));
+		cancelar.setFocusPainted(false);
+		cancelar.setText("Cancelar");
+		cancelar.setHorizontalTextPosition(SwingConstants.CENTER);
+		cancelar.setFont(new Font("Arial", Font.BOLD, 12));
+		cancelar.setBounds(172, 268, 90, 25);
+		cancelar.setBorder(null);
+		laminaPrincipal.add(cancelar);
+
+		registrar = new JButton(new ImageIcon(
+				"C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\login\\botonLoginSeleccion.png"));
+		registrar.setRolloverIcon(new ImageIcon(
+				"C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telefónicos\\pedidoTelefonico\\src\\icon\\login\\botonLoginDeteccionMouse.png"));
+		registrar.setFocusPainted(false);
+		registrar.setText("Registrarse");
+		registrar.setHorizontalTextPosition(SwingConstants.CENTER);
 		registrar.setFont(new Font("Arial", Font.BOLD, 12));
-		registrar.setBounds(13, 314, 109, 23);
+		registrar.setBounds(28, 268, 90, 25);
+		registrar.setBorder(null);
 		laminaPrincipal.add(registrar);
 
 		JSeparator separator = new JSeparator();
-		separator.setForeground(new Color(0, 0, 0));
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(283, 0, 8, 368);
+		separator.setBackground(Color.LIGHT_GRAY);
+		separator.setBounds(10, 56, 2, 190);
 		laminaPrincipal.add(separator);
 
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(
-		"C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\login\\logotipo.png"));
-		label.setBounds(286, 0, 332, 368);
-		laminaPrincipal.add(label);
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setOrientation(SwingConstants.VERTICAL);
+		separator_1.setBackground(Color.LIGHT_GRAY);
+		separator_1.setBounds(260, 56, 2, 190);
+		laminaPrincipal.add(separator_1);
 
-		password = new JPasswordField();
-		password.setBounds(28, 209, 245, 20);
-		laminaPrincipal.add(password);
-		
-		cancelar = new JButton("Cancelar");
-		cancelar.setFont(new Font("Arial", Font.BOLD, 12));
-		cancelar.setBounds(146, 314, 109, 23);
-		laminaPrincipal.add(cancelar);
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(10, 246, 252, 2);
+		laminaPrincipal.add(separator_2);
 
-		 
+		JSeparator separator_2_1 = new JSeparator();
+		separator_2_1.setBounds(10, 57, 252, 2);
+		laminaPrincipal.add(separator_2_1);
+
+		ControlRegistro cR = new ControlRegistro(this);
+
+		// Eventos botones
+		this.registrar.addActionListener(cR);
+		this.cancelar.addActionListener(cR);
+
 	}
-	
-	public String getPassword() {
-		
+
+	public byte[] getPassword() {
+
 		char[] vectorPassword = this.password.getPassword();
-		return new String(vectorPassword);
+		return new String(vectorPassword).getBytes();
 	}
 
 	public void setPassword(String password) {
@@ -101,7 +135,7 @@ public class Registro extends JFrame {
 	public void setDni(String dni) {
 		this.dni.setText(dni);
 	}
- 
+
 	public JButton getRegistrar() {
 		return registrar;
 	}
@@ -109,5 +143,5 @@ public class Registro extends JFrame {
 	public JButton getCancelar() {
 		return cancelar;
 	}
-	
+
 }
