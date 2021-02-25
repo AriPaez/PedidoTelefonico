@@ -25,15 +25,16 @@ BEGIN TRY
 		RAISERROR('ERROR. EL DNI DEBE SER ENTERO',14,1)
 	END
 	ELSE IF NOT EXISTS (SELECT dniEmpleado FROM empleado WHERE dniEmpleado=@dni
-	AND contrasenia=HASHBYTES('SHA2_512',@dni))
+	AND HASHBYTES('SHA2_512',@contrasenia)=contrasenia)
 	BEGIN
 		RAISERROR('ERROR. NO EXISTE NINGUNA CUENTA ASOCIADA
 		AL DNI INGRESADO',14,1)
 	END
 	ELSE
 	BEGIN
-		 SELECT dniEmpleado FROM empleado WHERE dniEmpleado=@dni
-		 AND contrasenia=HASHBYTES('SHA2_512',@dni)
+		 SELECT dniEmpleado 
+		 FROM empleado
+		 WHERE dniEmpleado=@dni AND HASHBYTES('SHA2_512',@contrasenia)=contrasenia
 	END
 END TRY
 BEGIN CATCH
@@ -67,8 +68,7 @@ BEGIN TRY
 	BEGIN
 		RAISERROR('EL NÚMERO DE DNI DEBE SER ENTERO',14,1)
 	END
-	ELSE IF EXISTS (SELECT dniEmpleado FROM empleado WHERE dniEmpleado=@dni
-	AND contrasenia=HASHBYTES('SHA2_512',@contrasenia))
+	ELSE IF EXISTS (SELECT dniEmpleado FROM empleado WHERE dniEmpleado=@dni)
 	BEGIN
 		RAISERROR('ERROR. YA EXISTE EL DNI EN LA BBDD.',14,1)
 	END
