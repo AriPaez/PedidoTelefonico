@@ -1,23 +1,33 @@
 package vista;
 
-import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import javax.swing.Icon;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+
+import controlador.ControlEmpleado;
 
 public class Empleado extends JFrame {
 
+	private JButton producto; 
+	private JButton cliente;
+	private JButton pedido;
+	private JButton backup;
+	private JMenu usuario ;
+	private JMenuItem contrasenia ;
+	private JMenu ayuda ;
+	JMenuItem aCercaDe;
+	private JMenuBar menuBar ;
+	
 	public Empleado()
 	{
 		// Caracteristicas de la ventana.
@@ -76,19 +86,19 @@ public class Empleado extends JFrame {
 		separator_3.setBounds(480, 11, 3, 144);
 		panelMenuPrincipal.add(separator_3);
 		
-		JButton producto = new JButton(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\botonRegistroProducto.png"));
+		producto = new JButton(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\botonRegistroProducto.png"));
 		producto.setBounds(34, 18, 105, 105);
 		panelMenuPrincipal.add(producto);
 		
-		JButton cliente = new JButton(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\botonRegistroCliente.png"));
+		cliente = new JButton(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\botonRegistroCliente.png"));
 		cliente.setBounds(191, 18, 105, 105);
 		panelMenuPrincipal.add(cliente);
 		
-		JButton cliente_1 = new JButton(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\botonPedido.png"));
-		cliente_1.setBounds(355, 18, 105, 105);
-		panelMenuPrincipal.add(cliente_1);
+		pedido = new JButton(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\botonPedido.png"));
+		pedido.setBounds(355, 18, 105, 105);
+		panelMenuPrincipal.add(pedido);
 		
-		JButton backup = new JButton(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\botonBackup.png"));
+		backup = new JButton(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\botonBackup.png"));
 		backup.setBounds(501, 18, 105, 105);
 		panelMenuPrincipal.add(backup);
 		
@@ -112,23 +122,57 @@ public class Empleado extends JFrame {
 		labelBackup.setBounds(525, 134, 69, 14);
 		panelMenuPrincipal.add(labelBackup);
 		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 182, 22);
+		menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 138, 22);
 		getContentPane().add(menuBar);
 		
-		JMenu usuario = new JMenu("USUARIO");
+		usuario = new JMenu("USUARIO");
 		menuBar.add(usuario);
 		
-		JMenuItem contrasenia = new JMenuItem("Cambiar contrase\u00F1a");
+		contrasenia = new JMenuItem("Cambiar contrase\u00F1a");
 		usuario.add(contrasenia);
 		
-		JMenu aCerdaDe = new JMenu("A CERCA DE");
-		menuBar.add(aCerdaDe);
+		ayuda = new JMenu("AYUDA");
+		menuBar.add(ayuda);
 		
-		JMenu exit = new JMenu("EXIT");
-		menuBar.add(exit);
+		aCercaDe = new JMenuItem("A cerca de Call Center");
+		ayuda.add(aCercaDe);
 	 
+		//Eventos botones y de JMenu
+		ControlEmpleado cE=new ControlEmpleado(this); 
+		
+		this.producto.addActionListener(cE);
+		this.cliente.addActionListener(cE);
+		this.pedido.addActionListener(cE);
+		this.backup.addActionListener(cE);
+		this.contrasenia.addActionListener(cE);
+		this.aCercaDe.addActionListener(cE);
 
 		 
 	}
+
+	public JButton getProducto() {
+		return producto;
+	}
+
+	public JButton getCliente() {
+		return cliente;
+	}
+
+	public JButton getPedido() {
+		return pedido;
+	}
+
+	public JButton getBackup() {
+		return backup;
+	}
+
+	public JMenuItem getContrasenia() {
+		return contrasenia;
+	}
+
+	public JMenuItem getaCercaDe() {
+		return aCercaDe;
+	}
+   
 }
