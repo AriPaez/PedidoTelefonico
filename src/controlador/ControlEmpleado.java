@@ -3,7 +3,10 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
 import modelo.ConexionBBDD;
+import vista.Cliente;
 import vista.Empleado;
 
 public class ControlEmpleado implements ActionListener {
@@ -27,7 +30,10 @@ public class ControlEmpleado implements ActionListener {
 		}
 		else if(botonElegido==empleado.getCliente())
 		{
-			System.out.println("cliente");
+			empleado.dispose();
+			Cliente c=new Cliente();
+			c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			c.setVisible(true);
 		}
 		else if(botonElegido==empleado.getPedido())
 		{
