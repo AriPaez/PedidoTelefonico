@@ -1,17 +1,19 @@
 package vista;
 
+import java.awt.CardLayout;
+import java.awt.Font;
+
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import java.awt.CardLayout;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import java.awt.Font;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import controlador.ControlCliente;
+import java.awt.Component;
 
 public class Cliente extends JFrame {
 	
@@ -25,8 +27,6 @@ public class Cliente extends JFrame {
 	private JTextField codigoPostalRegistro;
 	private JTextField localidadRegistro;
 	private JTextField provinciaRegistro;
-	private JButton registrarRegistro;
-	private JButton cancelarRegistro ;
 	private JTextField dniActualizacion;
 	private JTextField nombreActualizacion;
 	private JTextField apellidoActualizacion;
@@ -53,12 +53,20 @@ public class Cliente extends JFrame {
 	private JButton buscarClienteEliminacion; 
 	private JButton eliminarCliente ;
 	private JButton cancelarEliminacion ;
+	private JButton registrarRegistro;
+	private JButton cancelarRegistro ;
+	private JTextField celularRegistro;
+	private JTextField telefonoRegistro;
+	private JTextField celularActualizacion;
+	private JTextField telefonoActualizacion;
+	private JTextField celularEliminacion;
+	private JTextField telefonoEliminacion;
 	
 	public Cliente() {
 
 		// Caracteristicas de la ventana.
 		setTitle("CLIENTE");
-		setSize(546, 681);
+		setSize(546, 700);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		getContentPane().setLayout(null);
@@ -66,7 +74,7 @@ public class Cliente extends JFrame {
        
         //Lamina principal.
         JPanel panelPrincipal = new JPanel();
-        panelPrincipal.setBounds(0, 0, 532, 642);
+        panelPrincipal.setBounds(0, 0, 532, 661);
         getContentPane().add(panelPrincipal);
         
         //Panel con pestañas.
@@ -81,7 +89,7 @@ public class Cliente extends JFrame {
         //Registro Cliente
         JPanel panelRegistroCliente = new JPanel();
         panelRegistroCliente.setBorder(BorderFactory.createTitledBorder("REGISTRAR CLIENTE"));
-        panelRegistroCliente.setBounds(50, 11, 399, 484);
+        panelRegistroCliente.setBounds(50, 11, 399, 524);
         jPanelRegistro.add(panelRegistroCliente);
         panelRegistroCliente.setLayout(null);
         
@@ -184,10 +192,30 @@ public class Cliente extends JFrame {
         provinciaRegistro.setColumns(10);
         provinciaRegistro.setBounds(150, 396, 150, 20);
         panelRegistroCliente.add(provinciaRegistro);
+        
+        JLabel labelCelularRegistro = new JLabel("Celular");
+        labelCelularRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCelularRegistro.setBounds(38, 434, 86, 14);
+        panelRegistroCliente.add(labelCelularRegistro);
+        
+        celularRegistro = new JTextField();
+        celularRegistro.setColumns(10);
+        celularRegistro.setBounds(150, 431, 150, 20);
+        panelRegistroCliente.add(celularRegistro);
+        
+        JLabel labelTelefonoRegistro = new JLabel("Tel\u00E9fono");
+        labelTelefonoRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelTelefonoRegistro.setBounds(38, 475, 86, 14);
+        panelRegistroCliente.add(labelTelefonoRegistro);
+        
+        telefonoRegistro = new JTextField();
+        telefonoRegistro.setColumns(10);
+        telefonoRegistro.setBounds(150, 472, 150, 20);
+        panelRegistroCliente.add(telefonoRegistro);
        
         //Botones registro cliente.
         JPanel panelAccionesRegistro = new JPanel();
-        panelAccionesRegistro.setBounds(50, 506, 399, 87);
+        panelAccionesRegistro.setBounds(50, 536, 399, 87);
         jPanelRegistro.add(panelAccionesRegistro);
         panelAccionesRegistro.setBorder(BorderFactory.createTitledBorder("ACCIONES"));
         panelAccionesRegistro.setLayout(null);
@@ -218,13 +246,13 @@ public class Cliente extends JFrame {
         
         JPanel panelActualizar = new JPanel();
         panelActualizar.setLayout(null);
-        panelActualizar.setBounds(0, 0, 517, 604);
+        panelActualizar.setBounds(0, 0, 517, 623);
         jPanelActualizar.add(panelActualizar);
         
         JPanel panelActualizarCliente = new JPanel();
         panelActualizarCliente.setLayout(null);
-        panelActualizarCliente.setBorder(BorderFactory.createTitledBorder("REGISTRAR CLIENTE"));
-        panelActualizarCliente.setBounds(50, 11, 399, 484);
+        panelActualizarCliente.setBorder(BorderFactory.createTitledBorder("ACTUALIZAR CLIENTE"));
+        panelActualizarCliente.setBounds(50, 11, 399, 524);
         panelActualizar.add(panelActualizarCliente);
         
         JLabel labelDni_1 = new JLabel("DNI");
@@ -333,10 +361,30 @@ public class Cliente extends JFrame {
         buscarClienteActualizacion.setBounds(300, 21, 30, 20);
         panelActualizarCliente.add(buscarClienteActualizacion);
         
+        JLabel labelCelularActualizacion = new JLabel("Celular");
+        labelCelularActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCelularActualizacion.setBounds(38, 434, 86, 14);
+        panelActualizarCliente.add(labelCelularActualizacion);
+        
+        celularActualizacion = new JTextField();
+        celularActualizacion.setColumns(10);
+        celularActualizacion.setBounds(150, 431, 150, 20);
+        panelActualizarCliente.add(celularActualizacion);
+        
+        JLabel labelTelefonoActualizacion = new JLabel("Tel\u00E9fono");
+        labelTelefonoActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelTelefonoActualizacion.setBounds(38, 475, 86, 14);
+        panelActualizarCliente.add(labelTelefonoActualizacion);
+        
+        telefonoActualizacion = new JTextField();
+        telefonoActualizacion.setColumns(10);
+        telefonoActualizacion.setBounds(150, 472, 150, 20);
+        panelActualizarCliente.add(telefonoActualizacion);
+        
         JPanel panelAccionesActualizar = new JPanel();
         panelAccionesActualizar.setLayout(null);
         panelAccionesActualizar.setBorder(BorderFactory.createTitledBorder("ACCIONES"));
-        panelAccionesActualizar.setBounds(50, 506, 399, 87);
+        panelAccionesActualizar.setBounds(50, 536, 399, 87);
         panelActualizar.add(panelAccionesActualizar);
         
         actualizarCliente = new JButton("");
@@ -365,13 +413,13 @@ public class Cliente extends JFrame {
         
         JPanel panelEliminacion = new JPanel();
         panelEliminacion.setLayout(null);
-        panelEliminacion.setBounds(0, 0, 517, 604);
+        panelEliminacion.setBounds(0, 0, 517, 633);
         jPanelEliminar.add(panelEliminacion);
         
         JPanel panelEliminacionCliente = new JPanel();
         panelEliminacionCliente.setLayout(null);
-        panelEliminacionCliente.setBorder(BorderFactory.createTitledBorder("REGISTRAR CLIENTE"));
-        panelEliminacionCliente.setBounds(50, 11, 399, 484);
+        panelEliminacionCliente.setBorder(BorderFactory.createTitledBorder("ELIMINAR CLIENTE"));
+        panelEliminacionCliente.setBounds(50, 11, 399, 524);
         panelEliminacion.add(panelEliminacionCliente);
         
         JLabel labelDni_1_1 = new JLabel("DNI");
@@ -489,10 +537,32 @@ public class Cliente extends JFrame {
         buscarClienteEliminacion.setBounds(300, 21, 30, 20);
         panelEliminacionCliente.add(buscarClienteEliminacion);
         
+        JLabel labelCelularEliminacion = new JLabel("Celular");
+        labelCelularEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCelularEliminacion.setBounds(38, 434, 86, 14);
+        panelEliminacionCliente.add(labelCelularEliminacion);
+        
+        celularEliminacion = new JTextField();
+        celularEliminacion.setEnabled(false);
+        celularEliminacion.setColumns(10);
+        celularEliminacion.setBounds(150, 431, 150, 20);
+        panelEliminacionCliente.add(celularEliminacion);
+        
+        JLabel labelTelefonoEliminacion = new JLabel("Tel\u00E9fono");
+        labelTelefonoEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelTelefonoEliminacion.setBounds(38, 475, 86, 14);
+        panelEliminacionCliente.add(labelTelefonoEliminacion);
+        
+        telefonoEliminacion = new JTextField();
+        telefonoEliminacion.setEnabled(false);
+        telefonoEliminacion.setColumns(10);
+        telefonoEliminacion.setBounds(150, 472, 150, 20);
+        panelEliminacionCliente.add(telefonoEliminacion);
+        
         JPanel panelEliminacionRegistro = new JPanel();
         panelEliminacionRegistro.setLayout(null);
         panelEliminacionRegistro.setBorder(BorderFactory.createTitledBorder("ACCIONES"));
-        panelEliminacionRegistro.setBounds(50, 506, 399, 87);
+        panelEliminacionRegistro.setBounds(50, 536, 399, 87);
         panelEliminacion.add(panelEliminacionRegistro);
         
         eliminarCliente = new JButton("");
@@ -512,6 +582,24 @@ public class Cliente extends JFrame {
         JLabel labelSalirEliminacion = new JLabel("Salir");
         labelSalirEliminacion.setBounds(304, 62, 39, 14);
         panelEliminacionRegistro.add(labelSalirEliminacion);
+	
+        
+        
+        
+        //Eventos de botones.
+        
+        ControlCliente cC=new ControlCliente(this);
+        
+        buscarClienteActualizacion.addActionListener(cC);	
+    	actualizarCliente.addActionListener(cC);
+    	cancelarActualizacion.addActionListener(cC); 
+    	buscarClienteEliminacion.addActionListener(cC); 
+    	eliminarCliente.addActionListener(cC);
+    	cancelarEliminacion.addActionListener(cC);
+    	registrarRegistro.addActionListener(cC);
+    	cancelarRegistro.addActionListener(cC);
+        
+        
 	}
 
 	//Setter y getters de registro cliente
@@ -615,6 +703,21 @@ public class Cliente extends JFrame {
 		this.provinciaRegistro.setText(provinciaRegistro);
 	}
 
+	public String getCelularRegistro() {
+		return celularRegistro.getText();
+	}
+
+	public void setCelularRegistro(String celularRegistro) {
+		this.celularRegistro.setText(celularRegistro);;
+	}
+
+	public String getTelefonoRegistro() {
+		return telefonoRegistro.getText();
+	}
+
+	public void setTelefonoRegistro(String telefonoRegistro) {
+		this.telefonoRegistro.setText(telefonoRegistro);
+	}
 
 	public JButton getRegistrarRegistro() {
 		return registrarRegistro;
@@ -740,6 +843,22 @@ public class Cliente extends JFrame {
 		return this.buscarClienteActualizacion;
 	}
 	
+	public String getCelularActualizacion() {
+		return celularActualizacion.getText();
+	}
+
+	public void setCelularActualizacion(String celularRegistro) {
+		this.celularActualizacion.setText(celularRegistro);;
+	}
+
+	public String getTelefonoActualizacion() {
+		return telefonoActualizacion.getText();
+	}
+
+	public void setTelefonoActualizacion(String telefonoRegistro) {
+		this.telefonoActualizacion.setText(telefonoRegistro);
+	}
+	
 	//Setter y getters de eliminacion de cliente
 	public String getDniEliminacion() {
 		return dniEliminacion.getText();
@@ -855,4 +974,20 @@ public class Cliente extends JFrame {
 		return this.buscarClienteEliminacion;
 	}
 	
+	
+	public String getCelularEliminacion() {
+		return celularEliminacion.getText();
+	}
+
+	public void setCelularEliminacion(String celularRegistro) {
+		this.celularEliminacion.setText(celularRegistro);;
+	}
+
+	public String getTelefonoEliminacion() {
+		return telefonoEliminacion.getText();
+	}
+
+	public void setTelefonoEliminacion(String telefonoRegistro) {
+		this.telefonoEliminacion.setText(telefonoRegistro);
+	}
 }
