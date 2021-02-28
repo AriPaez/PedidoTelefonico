@@ -19,7 +19,7 @@ public class Login extends JFrame {
 	
 	private JPasswordField password;
 	private JButton registrar;
-	private JTextField dni ;
+	private static JTextField dni ;
 	private JButton login ;
 	
 	public Login() {
@@ -130,7 +130,7 @@ public class Login extends JFrame {
 		this.password.setText(password);
 	}
 
-	public String getDni() {
+	public static String getDni() {
 		return dni.getText();
 	}
 

@@ -27,6 +27,8 @@ public class Cliente extends JFrame {
 	private JTextField codigoPostalRegistro;
 	private JTextField localidadRegistro;
 	private JTextField provinciaRegistro;
+	private JTextField celularRegistro;
+	private JTextField telefonoRegistro;
 	private JTextField dniActualizacion;
 	private JTextField nombreActualizacion;
 	private JTextField apellidoActualizacion;
@@ -55,8 +57,6 @@ public class Cliente extends JFrame {
 	private JButton cancelarEliminacion ;
 	private JButton registrarRegistro;
 	private JButton cancelarRegistro ;
-	private JTextField celularRegistro;
-	private JTextField telefonoRegistro;
 	private JTextField celularActualizacion;
 	private JTextField telefonoActualizacion;
 	private JTextField celularEliminacion;
@@ -154,6 +154,7 @@ public class Cliente extends JFrame {
         panelRegistroCliente.add(pisoRegistro);
         
         nroCasaRegistro = new JTextField();
+        nroCasaRegistro.setText("");
         nroCasaRegistro.setColumns(10);
         nroCasaRegistro.setBounds(150, 187, 150, 20);
         panelRegistroCliente.add(nroCasaRegistro);
@@ -598,106 +599,106 @@ public class Cliente extends JFrame {
     	cancelarEliminacion.addActionListener(cC);
     	registrarRegistro.addActionListener(cC);
     	cancelarRegistro.addActionListener(cC);
-        
+    	
+    	//Evento escritura en JTextField de registro.
+		dniRegistro.addKeyListener(cC);
+		nombreRegistro.addKeyListener(cC);
+		apellidoRegistro.addKeyListener(cC);
+		calleRegistro.addKeyListener(cC);
+		pisoRegistro.addKeyListener(cC);
+		nroCasaRegistro.addKeyListener(cC);
+		departamentoRegistro.addKeyListener(cC);
+		codigoPostalRegistro.addKeyListener(cC);
+		localidadRegistro.addKeyListener(cC);
+		provinciaRegistro.addKeyListener(cC);
+		celularRegistro.addKeyListener(cC);
+		telefonoRegistro.addKeyListener(cC);
         
 	}
-
-	//Setter y getters de registro cliente
 	
+	// Setter y getters de registro cliente
+
 	public String getDniRegistro() {
 		return dniRegistro.getText();
 	}
 
-
 	public void setDniRegistro(String dniRegistro) {
-		this.dniRegistro .setText(dniRegistro);
+		this.dniRegistro.setText(dniRegistro);
 	}
-
 
 	public String getNombreRegistro() {
 		return nombreRegistro.getText();
 	}
 
-
 	public void setNombreRegistro(String nombreRegistro) {
-		this.nombreRegistro .setText(nombreRegistro);
+		this.nombreRegistro.setText(nombreRegistro);
 	}
-
 
 	public String getApellidoRegistro() {
 		return apellidoRegistro.getText();
 	}
 
-
 	public void setApellidoRegistro(String apellidoRegistro) {
 		this.apellidoRegistro.setText(apellidoRegistro);
 	}
-
 
 	public String getCalleRegistro() {
 		return calleRegistro.getText();
 	}
 
-
 	public void setCalleRegistro(String calleRegistro) {
 		this.calleRegistro.setText(calleRegistro);
 	}
-
 
 	public String getPisoRegistro() {
 		return pisoRegistro.getText();
 	}
 
-
 	public void setPisoRegistro(String pisoRegistro) {
 		this.pisoRegistro.setText(pisoRegistro);
 	}
 
+	public int getNroCasaRegistro() {
 
-	public String getNroCasaRegistro() {
-		return nroCasaRegistro.getText();
+		if (this.nroCasaRegistro.getText().equals("")) {
+			return 0;
+		}
+
+		return Integer.parseInt(nroCasaRegistro.getText());
+
 	}
-
 
 	public void setNroCasaRegistro(String nroCasaRegistro) {
-		this.nroCasaRegistro .setText(nroCasaRegistro);
+		this.nroCasaRegistro.setText(nroCasaRegistro);
 	}
-
 
 	public String getDepartamentoRegistro() {
 		return departamentoRegistro.getText();
 	}
 
-
 	public void setDepartamentoRegistro(String departamentoRegistro) {
 		this.departamentoRegistro.setText(departamentoRegistro);
 	}
-
 
 	public String getCodigoPostalRegistro() {
 		return codigoPostalRegistro.getText();
 	}
 
-
 	public void setCodigoPostalRegistro(String codigoPostalRegistro) {
 		this.codigoPostalRegistro.setText(codigoPostalRegistro);
 	}
-
 
 	public String getLocalidadRegistro() {
 		return localidadRegistro.getText();
 	}
 
-
 	public void setLocalidadRegistro(String localidadRegistro) {
 		this.localidadRegistro.setText(localidadRegistro);
 	}
 
-
 	public String getProvinciaRegistro() {
 		return provinciaRegistro.getText();
 	}
-
 
 	public void setProvinciaRegistro(String provinciaRegistro) {
 		this.provinciaRegistro.setText(provinciaRegistro);
@@ -708,7 +709,8 @@ public class Cliente extends JFrame {
 	}
 
 	public void setCelularRegistro(String celularRegistro) {
-		this.celularRegistro.setText(celularRegistro);;
+		this.celularRegistro.setText(celularRegistro);
+		;
 	}
 
 	public String getTelefonoRegistro() {
@@ -723,132 +725,110 @@ public class Cliente extends JFrame {
 		return registrarRegistro;
 	}
 
-
 	public JButton getCancelarRegistro() {
 		return cancelarRegistro;
 	}
-	
-	//Setter y getters de actualizacion de cliente
+
+	// Setter y getters de actualizacion de cliente
 	public String getDniActualizacion() {
 		return dniActualizacion.getText();
 	}
-
 
 	public void setDniActualizacion(String dniRegistro) {
 		this.dniActualizacion.setText(dniRegistro);
 	}
 
-
 	public String getNombreActualizacion() {
 		return nombreActualizacion.getText();
 	}
-
 
 	public void setNombreActualizacion(String nombreRegistro) {
 		this.nombreActualizacion.setText(nombreRegistro);
 	}
 
-
 	public String getApellidoActualizacion() {
 		return apellidoActualizacion.getText();
 	}
-
 
 	public void setApellidoActualizacion(String apellidoRegistro) {
 		this.apellidoActualizacion.setText(apellidoRegistro);
 	}
 
-
 	public String getCalleActualizacion() {
 		return calleActualizacion.getText();
 	}
-
 
 	public void setCalleActualizacion(String calleRegistro) {
 		this.calleActualizacion.setText(calleRegistro);
 	}
 
-
 	public String getPisoActualizacion() {
 		return pisoActualizacion.getText();
 	}
-
 
 	public void setPisoActualizacion(String pisoRegistro) {
 		this.pisoActualizacion.setText(pisoRegistro);
 	}
 
-
 	public String getNroCasaActualizacion() {
 		return nroDeCasaActualizacion.getText();
 	}
-
 
 	public void setNroCasaActualizacion(String nroCasaRegistro) {
 		this.nroDeCasaActualizacion.setText(nroCasaRegistro);
 	}
 
-
 	public String getDepartamentoActualizacion() {
 		return departamentoActualizacion.getText();
 	}
-
 
 	public void setDepartamentoActualizacion(String departamentoRegistro) {
 		this.departamentoActualizacion.setText(departamentoRegistro);
 	}
 
-
 	public String getCodigoPostalActualizacion() {
 		return codigoPostalActualizacion.getText();
 	}
-
 
 	public void setCodigoPostalActualizacion(String codigoPostalRegistro) {
 		this.codigoPostalActualizacion.setText(codigoPostalRegistro);
 	}
 
-
 	public String getLocalidadActualizacion() {
 		return localidadActualizacion.getText();
 	}
-
 
 	public void setLocalidadActualizacion(String localidadRegistro) {
 		this.localidadActualizacion.setText(localidadRegistro);
 	}
 
-
 	public String getProvinciaActualizacion() {
 		return provinciaActualizacion.getText();
 	}
-
 
 	public void setProvinciaActualizacion(String provinciaRegistro) {
 		this.provinciaActualizacion.setText(provinciaRegistro);
 	}
 
-
 	public JButton getRegistrarActualizacion() {
-		 return this.actualizarCliente;
+		return this.actualizarCliente;
 	}
-
 
 	public JButton getCancelarActualizacion() {
-		 return this.cancelarActualizacion;
+		return this.cancelarActualizacion;
 	}
-	
-	public JButton BuscarClienteActualizacion()
-	{
+
+	public JButton BuscarClienteActualizacion() {
 		return this.buscarClienteActualizacion;
 	}
-	
+
 	public String getCelularActualizacion() {
 		return celularActualizacion.getText();
 	}
 
 	public void setCelularActualizacion(String celularRegistro) {
-		this.celularActualizacion.setText(celularRegistro);;
+		this.celularActualizacion.setText(celularRegistro);
+		;
 	}
 
 	public String getTelefonoActualizacion() {
@@ -858,129 +838,107 @@ public class Cliente extends JFrame {
 	public void setTelefonoActualizacion(String telefonoRegistro) {
 		this.telefonoActualizacion.setText(telefonoRegistro);
 	}
-	
-	//Setter y getters de eliminacion de cliente
+
+	// Setter y getters de eliminacion de cliente
 	public String getDniEliminacion() {
 		return dniEliminacion.getText();
 	}
-
 
 	public void setDniEliminacion(String dniRegistro) {
 		this.dniEliminacion.setText(dniRegistro);
 	}
 
-
 	public String getNombreEliminacion() {
 		return nombreEliminacion.getText();
 	}
-
 
 	public void setNombreEliminacion(String nombreRegistro) {
 		this.nombreEliminacion.setText(nombreRegistro);
 	}
 
-
 	public String getApellidoEliminacion() {
 		return apellidoEliminacion.getText();
 	}
-
 
 	public void setApellidoEliminacion(String apellidoRegistro) {
 		this.apellidoEliminacion.setText(apellidoRegistro);
 	}
 
-
 	public String getCalleEliminacion() {
 		return calleEliminacion.getText();
 	}
-
 
 	public void setCalleEliminacion(String calleRegistro) {
 		this.calleEliminacion.setText(calleRegistro);
 	}
 
-
 	public String getPisoEliminacion() {
 		return pisoEliminacion.getText();
 	}
-
 
 	public void setPisoEliminacion(String pisoRegistro) {
 		this.pisoEliminacion.setText(pisoRegistro);
 	}
 
-
 	public String getNroCasaEliminacion() {
 		return nroDeCasaEliminacion.getText();
 	}
-
 
 	public void setNroCasaEliminacion(String nroCasaRegistro) {
 		this.nroDeCasaEliminacion.setText(nroCasaRegistro);
 	}
 
-
 	public String getDepartamentoEliminacion() {
 		return departamentoEliminacion.getText();
 	}
-
 
 	public void setDepartamentoEliminacion(String departamentoRegistro) {
 		this.departamentoEliminacion.setText(departamentoRegistro);
 	}
 
-
 	public String getCodigoPostalEliminacion() {
 		return codigoPostalEliminacion.getText();
 	}
-
 
 	public void setCodigoPostalEliminacion(String codigoPostalRegistro) {
 		this.codigoPostalEliminacion.setText(codigoPostalRegistro);
 	}
 
-
 	public String getLocalidadEliminacion() {
 		return localidadEliminacion.getText();
 	}
-
 
 	public void setLocalidadEliminacion(String localidadRegistro) {
 		this.localidadEliminacion.setText(localidadRegistro);
 	}
 
-
 	public String getProvinciaEliminacion() {
 		return provinciaEliminacion.getText();
 	}
-
 
 	public void setProvinciaEliminacion(String provinciaRegistro) {
 		this.provinciaEliminacion.setText(provinciaRegistro);
 	}
 
-
 	public JButton getRegistrarEliminacion() {
-		 return this.eliminarCliente;
+		return this.eliminarCliente;
 	}
-
 
 	public JButton getCancelarEliminacion() {
-		 return this.cancelarEliminacion;
+		return this.cancelarEliminacion;
 	}
-	
-	public JButton BuscarClienteEliminacion()
-	{
+
+	public JButton BuscarClienteEliminacion() {
 		return this.buscarClienteEliminacion;
 	}
-	
-	
+
 	public String getCelularEliminacion() {
 		return celularEliminacion.getText();
 	}
 
 	public void setCelularEliminacion(String celularRegistro) {
-		this.celularEliminacion.setText(celularRegistro);;
+		this.celularEliminacion.setText(celularRegistro);
+		;
 	}
 
 	public String getTelefonoEliminacion() {
@@ -990,4 +948,152 @@ public class Cliente extends JFrame {
 	public void setTelefonoEliminacion(String telefonoRegistro) {
 		this.telefonoEliminacion.setText(telefonoRegistro);
 	}
+	
+	//Getter JTextField 
+
+	public JTextField getJTextFieldDniRegistro() {
+		return dniRegistro;
+	}
+
+	public JTextField getJTextFieldNombreRegistro() {
+		return nombreRegistro;
+	}
+
+	public JTextField getJTextFieldApellidoRegistro() {
+		return apellidoRegistro;
+	}
+
+	public JTextField getJTextFieldCalleRegistro() {
+		return calleRegistro;
+	}
+
+	public JTextField getJTextFieldPisoRegistro() {
+		return pisoRegistro;
+	}
+
+	public JTextField getJTextFieldNroCasaRegistro() {
+		return nroCasaRegistro;
+	}
+
+	public JTextField getJTextFieldDepartamentoRegistro() {
+		return departamentoRegistro;
+	}
+
+	public JTextField getJTextFieldCodigoPostalRegistro() {
+		return codigoPostalRegistro;
+	}
+
+	public JTextField getJTextFieldLocalidadRegistro() {
+		return localidadRegistro;
+	}
+
+	public JTextField getJTextFieldProvinciaRegistro() {
+		return provinciaRegistro;
+	}
+
+	public JTextField getJTextFieldDniActualizacion() {
+		return dniActualizacion;
+	}
+
+	public JTextField getJTextFieldNombreActualizacion() {
+		return nombreActualizacion;
+	}
+
+	public JTextField getJTextFieldApellidoActualizacion() {
+		return apellidoActualizacion;
+	}
+
+	public JTextField getJTextFieldCalleActualizacion() {
+		return calleActualizacion;
+	}
+
+	public JTextField getJTextFieldPisoActualizacion() {
+		return pisoActualizacion;
+	}
+
+	public JTextField getNroDeCasaActualizacion() {
+		return nroDeCasaActualizacion;
+	}
+
+	public JTextField getJTextFieldDepartamentoActualizacion() {
+		return departamentoActualizacion;
+	}
+
+	public JTextField getJTextFieldCodigoPostalActualizacion() {
+		return codigoPostalActualizacion;
+	}
+
+	public JTextField getJTextFieldLocalidadActualizacion() {
+		return localidadActualizacion;
+	}
+
+	public JTextField getJTextFieldProvinciaActualizacion() {
+		return provinciaActualizacion;
+	}
+
+	public JTextField getJTextFieldDniEliminacion() {
+		return dniEliminacion;
+	}
+
+	public JTextField getJTextFieldNombreEliminacion() {
+		return nombreEliminacion;
+	}
+
+	public JTextField getJTextFieldApellidoEliminacion() {
+		return apellidoEliminacion;
+	}
+
+	public JTextField getJTextFieldCalleEliminacion() {
+		return calleEliminacion;
+	}
+
+	public JTextField getJTextFieldPisoEliminacion() {
+		return pisoEliminacion;
+	}
+
+	public JTextField getJTextFieldNroDeCasaEliminacion() {
+		return nroDeCasaEliminacion;
+	}
+
+	public JTextField getJTextFieldDepartamentoEliminacion() {
+		return departamentoEliminacion;
+	}
+
+	public JTextField getJTextFieldCodigoPostalEliminacion() {
+		return codigoPostalEliminacion;
+	}
+
+	public JTextField getJTextFieldLocalidadEliminacion() {
+		return localidadEliminacion;
+	}
+
+	public JTextField getJTextFieldProvinciaEliminacion() {
+		return provinciaEliminacion;
+	}
+
+	public JTextField getJTextFieldCelularRegistro() {
+		return celularRegistro;
+	}
+
+	public JTextField getJTextFieldTelefonoRegistro() {
+		return telefonoRegistro;
+	}
+
+	public JTextField getJTextFieldCelularActualizacion() {
+		return celularActualizacion;
+	}
+
+	public JTextField getJTextFieldTelefonoActualizacion() {
+		return telefonoActualizacion;
+	}
+
+	public JTextField getJTextFieldCelularEliminacion() {
+		return celularEliminacion;
+	}
+
+	public JTextField getJTextFieldTelefonoEliminacion() {
+		return telefonoEliminacion;
+	}
+ 
+	
 }
