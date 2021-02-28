@@ -13,11 +13,11 @@ CREATE TABLE cliente
 	calle VARCHAR(30) NOT NULL,
 	nroCasa INT NOT NULL,
 	piso INT NOT NULL,
-	Depto INT NOT NULL,
+	Depto VARCHAR(10) ,
 	codigoPostal VARCHAR(5) NOT NULL,
 	localidad VARCHAR(30) NOT NULL,
 	provincia VARCHAR(30) NOT NULL,
-	telefonoDomicilio VARCHAR(10) NOT NULL,
+	telefonoDomicilio VARCHAR(10),
 	telefonoMovil VARCHAR(10) NOT NULL
 
 	FOREIGN KEY(dniEmpleado) REFERENCES Empleado(dniEmpleado)
@@ -27,11 +27,11 @@ CREATE TABLE cliente
 CREATE TABLE producto
 (
 	idProducto VARCHAR(4) PRIMARY KEY NOT NULL,
-	nombre VARCHAR(20),
-	descripcion VARCHAR(30),
-	unidadDeMedida FLOAT,
-	precio FLOAT,
-	categoria VARCHAR(20)
+	nombre VARCHAR(20) NOT NULL,
+	descripcion VARCHAR(30) NOT NULL,
+	unidadDeMedida FLOAT NOT NULL,
+	precio FLOAT NOT NULL,
+	categoria VARCHAR(20) NOT NULL
 )
 
 CREATE TABLE pedido
