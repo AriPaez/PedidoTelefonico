@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -13,7 +15,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controlador.ControlCliente;
-import java.awt.Component;
 
 public class Cliente extends JFrame {
 	
@@ -130,6 +131,7 @@ public class Cliente extends JFrame {
         
         calleRegistro = new JTextField();
         calleRegistro.setColumns(10);
+        calleRegistro.setText("");
         calleRegistro.setBounds(150, 140, 150, 20);
         panelRegistroCliente.add(calleRegistro);
         
@@ -643,15 +645,32 @@ public class Cliente extends JFrame {
 	}
 
 	public String getCalleRegistro() {
-		return calleRegistro.getText();
+		return this.calleRegistro.getText();
 	}
 
 	public void setCalleRegistro(String calleRegistro) {
 		this.calleRegistro.setText(calleRegistro);
 	}
 
-	public String getPisoRegistro() {
-		return pisoRegistro.getText();
+	public int getPisoRegistro() {
+		 
+		if (!this.pisoRegistro.getText().equals("") && this.pisoRegistro.getText().matches("[0-9]*"))
+		{
+			return Integer.parseInt(nroCasaRegistro.getText());
+
+			
+		}
+		//Si retorna cero e poque no el JTextFiel esta vacio
+		if(this.pisoRegistro.getText().equals(""))
+		{
+			return 0;
+		}
+		else//retorna -1 cuando se ingresa caracteres diferentes a [0-9]
+		{
+			return -1;
+		}
+
+		 
 	}
 
 	public void setPisoRegistro(String pisoRegistro) {
@@ -660,12 +679,23 @@ public class Cliente extends JFrame {
 
 	public int getNroCasaRegistro() {
 
-		if (this.nroCasaRegistro.getText().equals("")) {
+		if (!this.nroCasaRegistro.getText().equals("") && this.nroCasaRegistro.getText().matches("[0-9]*"))
+		{
+			return Integer.parseInt(nroCasaRegistro.getText());
+
+			
+		}
+		//Si retorna cero e poque no el JTextFiel esta vacio
+		if(this.nroCasaRegistro.getText().equals(""))
+		{
 			return 0;
 		}
+		else//retorna -1 cuando se ingresa caracteres diferentes a [0-9]
+		{
+			return -1;
+		}
 
-		return Integer.parseInt(nroCasaRegistro.getText());
-
+		
 	}
 
 	public void setNroCasaRegistro(String nroCasaRegistro) {

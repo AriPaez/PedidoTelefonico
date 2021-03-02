@@ -17,7 +17,7 @@ CREATE TABLE cliente
 	codigoPostal VARCHAR(5) NOT NULL,
 	localidad VARCHAR(30) NOT NULL,
 	provincia VARCHAR(30) NOT NULL,
-	telefonoDomicilio VARCHAR(10),
+	telefonoDomicilio VARCHAR(11),
 	telefonoMovil VARCHAR(10) NOT NULL
 
 	FOREIGN KEY(dniEmpleado) REFERENCES Empleado(dniEmpleado)
