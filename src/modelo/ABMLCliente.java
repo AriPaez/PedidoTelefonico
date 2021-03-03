@@ -406,6 +406,45 @@ public class ABMLCliente {
 		
 		 
 	}
+	
+	public void buscarClienteConsulta()
+	{
+		ResultSet tabla = null;
+		
+		try 
+		{
+			CallableStatement buscarCliente=conexionBBDD.
+			getConexionBBDD().prepareCall("{call buscarCliente(?)}");
+			
+			
+			buscarCliente.setString(1,cliente.getDniConsulta());
+			
+			tabla=buscarCliente.executeQuery(); 
+			
+			while(tabla.next())
+			{
+				cliente.setNombreConsulta(tabla.getString(1));
+				cliente.setApellidoConsulta(tabla.getString(2));
+				cliente.setCalleConsulta(tabla.getString(3));
+				cliente.setNroCasaConsulta(tabla.getString(4));
+				cliente.setPisoConsulta(tabla.getString(5));
+				cliente.setDepartamentoConsulta(tabla.getString(6));
+				cliente.setCodigoPostalConsulta(tabla.getString(7));
+				cliente.setLocalidadConsulta(tabla.getString(8));
+				cliente.setProvinciaConsulta(tabla.getString(9));
+				cliente.setTelefonoConsulta(tabla.getString(10));
+				cliente.setCelularConsulta(tabla.getString(11));
+			}
+			
+			
+		}
+		catch (SQLException e)
+		{
+			JOptionPane.showMessageDialog(null,e.getMessage() ,"BBDD", 2, null);
+		}
+		
+		 
+	}
 	 
 	  
 }

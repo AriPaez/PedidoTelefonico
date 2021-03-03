@@ -1,10 +1,7 @@
 package vista;
 
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Font;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -63,6 +60,20 @@ public class Cliente extends JFrame {
 	private JTextField telefonoActualizacion;
 	private JTextField celularEliminacion;
 	private JTextField telefonoEliminacion;
+	private JTextField dniConsulta;
+	private JTextField nombreConsulta;
+	private JTextField apellidoConsulta;
+	private JTextField calleConsulta;
+	private JTextField pisoConsulta;
+	private JTextField nroCasaConsulta;
+	private JTextField departamentoConsulta;
+	private JTextField codigoPostalConsulta;
+	private JTextField localidadConsulta;
+	private JTextField provinciaConsulta;
+	private JTextField celularConsulta;
+	private JTextField telefonoConsulta;
+	private JButton cancelarConsulta ;
+	private JButton buscarConsulta ;
 	
 	public Cliente() {
 
@@ -95,40 +106,40 @@ public class Cliente extends JFrame {
         jPanelRegistro.add(panelRegistroCliente);
         panelRegistroCliente.setLayout(null);
         
-        JLabel labelDni = new JLabel("DNI");
-        labelDni.setFont(new Font("Arial", Font.BOLD, 12));
-        labelDni.setBounds(38, 27, 46, 14);
-        panelRegistroCliente.add(labelDni);
+        JLabel labelDniRegistro = new JLabel("DNI");
+        labelDniRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelDniRegistro.setBounds(38, 27, 46, 14);
+        panelRegistroCliente.add(labelDniRegistro);
         
         dniRegistro = new JTextField();
         dniRegistro.setBounds(150, 21, 150, 20);
         panelRegistroCliente.add(dniRegistro);
         dniRegistro.setColumns(10);
         
-        JLabel labelNombre = new JLabel("Nombre");
-        labelNombre.setFont(new Font("Arial", Font.BOLD, 12));
-        labelNombre.setBounds(38, 64, 46, 14);
-        panelRegistroCliente.add(labelNombre);
+        JLabel labelNombreRegistro = new JLabel("Nombre");
+        labelNombreRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelNombreRegistro.setBounds(38, 64, 46, 14);
+        panelRegistroCliente.add(labelNombreRegistro);
         
         nombreRegistro = new JTextField();
         nombreRegistro.setColumns(10);
         nombreRegistro.setBounds(150, 58, 150, 20);
         panelRegistroCliente.add(nombreRegistro);
         
-        JLabel lbaelApellido = new JLabel("Apellido");
-        lbaelApellido.setFont(new Font("Arial", Font.BOLD, 12));
-        lbaelApellido.setBounds(38, 104, 46, 14);
-        panelRegistroCliente.add(lbaelApellido);
+        JLabel lbaelApellidoRegistro = new JLabel("Apellido");
+        lbaelApellidoRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        lbaelApellidoRegistro.setBounds(38, 104, 46, 14);
+        panelRegistroCliente.add(lbaelApellidoRegistro);
         
         apellidoRegistro = new JTextField();
         apellidoRegistro.setColumns(10);
         apellidoRegistro.setBounds(150, 98, 150, 20);
         panelRegistroCliente.add(apellidoRegistro);
         
-        JLabel labelCalle = new JLabel("Calle");
-        labelCalle.setFont(new Font("Arial", Font.BOLD, 12));
-        labelCalle.setBounds(38, 146, 46, 14);
-        panelRegistroCliente.add(labelCalle);
+        JLabel labelCalleRegistro = new JLabel("Calle");
+        labelCalleRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCalleRegistro.setBounds(38, 146, 46, 14);
+        panelRegistroCliente.add(labelCalleRegistro);
         
         calleRegistro = new JTextField();
         calleRegistro.setColumns(10);
@@ -136,20 +147,20 @@ public class Cliente extends JFrame {
         calleRegistro.setBounds(150, 140, 150, 20);
         panelRegistroCliente.add(calleRegistro);
         
-        JLabel labelNroCasa_1 = new JLabel("Nro. Casa");
-        labelNroCasa_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelNroCasa_1.setBounds(38, 194, 64, 14);
-        panelRegistroCliente.add(labelNroCasa_1);
+        JLabel labelNroCasaRegistro = new JLabel("Nro. Casa");
+        labelNroCasaRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelNroCasaRegistro.setBounds(38, 194, 64, 14);
+        panelRegistroCliente.add(labelNroCasaRegistro);
         
-        JLabel labelPiso = new JLabel("Piso");
-        labelPiso.setFont(new Font("Arial", Font.BOLD, 12));
-        labelPiso.setBounds(38, 237, 64, 14);
-        panelRegistroCliente.add(labelPiso);
+        JLabel labelPisoRegistro = new JLabel("Piso");
+        labelPisoRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelPisoRegistro.setBounds(38, 237, 64, 14);
+        panelRegistroCliente.add(labelPisoRegistro);
         
-        JLabel labelDpto = new JLabel("Dpto.");
-        labelDpto.setFont(new Font("Arial", Font.BOLD, 12));
-        labelDpto.setBounds(38, 277, 64, 14);
-        panelRegistroCliente.add(labelDpto);
+        JLabel labelDptoRegistro = new JLabel("Dpto.");
+        labelDptoRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelDptoRegistro.setBounds(38, 277, 64, 14);
+        panelRegistroCliente.add(labelDptoRegistro);
         
         pisoRegistro = new JTextField();
         pisoRegistro.setColumns(10);
@@ -167,30 +178,30 @@ public class Cliente extends JFrame {
         departamentoRegistro.setBounds(150, 274, 150, 20);
         panelRegistroCliente.add(departamentoRegistro);
         
-        JLabel labelCodigoPostal = new JLabel("C\u00F3digo Postal");
-        labelCodigoPostal.setFont(new Font("Arial", Font.BOLD, 12));
-        labelCodigoPostal.setBounds(38, 316, 86, 14);
-        panelRegistroCliente.add(labelCodigoPostal);
+        JLabel labelCodigoPostalRegistro = new JLabel("C\u00F3digo Postal");
+        labelCodigoPostalRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCodigoPostalRegistro.setBounds(38, 316, 86, 14);
+        panelRegistroCliente.add(labelCodigoPostalRegistro);
         
         codigoPostalRegistro = new JTextField();
         codigoPostalRegistro.setColumns(10);
         codigoPostalRegistro.setBounds(150, 313, 150, 20);
         panelRegistroCliente.add(codigoPostalRegistro);
         
-        JLabel lblLocalidad = new JLabel("Localidad");
-        lblLocalidad.setFont(new Font("Arial", Font.BOLD, 12));
-        lblLocalidad.setBounds(38, 358, 86, 14);
-        panelRegistroCliente.add(lblLocalidad);
+        JLabel lblLocalidadRegistro = new JLabel("Localidad");
+        lblLocalidadRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        lblLocalidadRegistro.setBounds(38, 358, 86, 14);
+        panelRegistroCliente.add(lblLocalidadRegistro);
         
         localidadRegistro = new JTextField();
         localidadRegistro.setColumns(10);
         localidadRegistro.setBounds(150, 355, 150, 20);
         panelRegistroCliente.add(localidadRegistro);
         
-        JLabel lblProvincia = new JLabel("Provincia");
-        lblProvincia.setFont(new Font("Arial", Font.BOLD, 12));
-        lblProvincia.setBounds(38, 399, 86, 14);
-        panelRegistroCliente.add(lblProvincia);
+        JLabel lblProvinciaRegistro = new JLabel("Provincia");
+        lblProvinciaRegistro.setFont(new Font("Arial", Font.BOLD, 12));
+        lblProvinciaRegistro.setBounds(38, 399, 86, 14);
+        panelRegistroCliente.add(lblProvinciaRegistro);
         
         provinciaRegistro = new JTextField();
         provinciaRegistro.setColumns(10);
@@ -259,60 +270,60 @@ public class Cliente extends JFrame {
         panelActualizarCliente.setBounds(50, 11, 399, 524);
         panelActualizar.add(panelActualizarCliente);
         
-        JLabel labelDni_1 = new JLabel("DNI");
-        labelDni_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelDni_1.setBounds(38, 27, 46, 14);
-        panelActualizarCliente.add(labelDni_1);
+        JLabel labelDniActualizacion = new JLabel("DNI");
+        labelDniActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelDniActualizacion.setBounds(38, 27, 46, 14);
+        panelActualizarCliente.add(labelDniActualizacion);
         
         dniActualizacion = new JTextField();
         dniActualizacion.setColumns(10);
         dniActualizacion.setBounds(150, 21, 150, 20);
         panelActualizarCliente.add(dniActualizacion);
         
-        JLabel labelNombre_1 = new JLabel("Nombre");
-        labelNombre_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelNombre_1.setBounds(38, 64, 46, 14);
-        panelActualizarCliente.add(labelNombre_1);
+        JLabel labelNombreActualizacion = new JLabel("Nombre");
+        labelNombreActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelNombreActualizacion.setBounds(38, 64, 46, 14);
+        panelActualizarCliente.add(labelNombreActualizacion);
         
         nombreActualizacion = new JTextField();
         nombreActualizacion.setColumns(10);
         nombreActualizacion.setBounds(150, 58, 150, 20);
         panelActualizarCliente.add(nombreActualizacion);
         
-        JLabel lbaelApellido_1 = new JLabel("Apellido");
-        lbaelApellido_1.setFont(new Font("Arial", Font.BOLD, 12));
-        lbaelApellido_1.setBounds(38, 104, 46, 14);
-        panelActualizarCliente.add(lbaelApellido_1);
+        JLabel lbaelApellidoActualizacion = new JLabel("Apellido");
+        lbaelApellidoActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        lbaelApellidoActualizacion.setBounds(38, 104, 46, 14);
+        panelActualizarCliente.add(lbaelApellidoActualizacion);
         
         apellidoActualizacion = new JTextField();
         apellidoActualizacion.setColumns(10);
         apellidoActualizacion.setBounds(150, 98, 150, 20);
         panelActualizarCliente.add(apellidoActualizacion);
         
-        JLabel labelCalle_1 = new JLabel("Calle");
-        labelCalle_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelCalle_1.setBounds(38, 146, 46, 14);
-        panelActualizarCliente.add(labelCalle_1);
+        JLabel labelCalleActualizacion = new JLabel("Calle");
+        labelCalleActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCalleActualizacion.setBounds(38, 146, 46, 14);
+        panelActualizarCliente.add(labelCalleActualizacion);
         
         calleActualizacion = new JTextField();
         calleActualizacion.setColumns(10);
         calleActualizacion.setBounds(150, 140, 150, 20);
         panelActualizarCliente.add(calleActualizacion);
         
-        JLabel labelNroCasa_1_1 = new JLabel("Nro. Casa");
-        labelNroCasa_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelNroCasa_1_1.setBounds(38, 194, 64, 14);
-        panelActualizarCliente.add(labelNroCasa_1_1);
+        JLabel labelNroCasaActualizacion = new JLabel("Nro. Casa");
+        labelNroCasaActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelNroCasaActualizacion.setBounds(38, 194, 64, 14);
+        panelActualizarCliente.add(labelNroCasaActualizacion);
         
-        JLabel labelPiso_1 = new JLabel("Piso");
-        labelPiso_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelPiso_1.setBounds(38, 237, 64, 14);
-        panelActualizarCliente.add(labelPiso_1);
+        JLabel labelPisoActualizacion = new JLabel("Piso");
+        labelPisoActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelPisoActualizacion.setBounds(38, 237, 64, 14);
+        panelActualizarCliente.add(labelPisoActualizacion);
         
-        JLabel labelDpto_1 = new JLabel("Dpto.");
-        labelDpto_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelDpto_1.setBounds(38, 277, 64, 14);
-        panelActualizarCliente.add(labelDpto_1);
+        JLabel labelDptoActualizacion = new JLabel("Dpto.");
+        labelDptoActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelDptoActualizacion.setBounds(38, 277, 64, 14);
+        panelActualizarCliente.add(labelDptoActualizacion);
         
         pisoActualizacion = new JTextField();
         pisoActualizacion.setColumns(10);
@@ -329,30 +340,30 @@ public class Cliente extends JFrame {
         departamentoActualizacion.setBounds(150, 274, 150, 20);
         panelActualizarCliente.add(departamentoActualizacion);
         
-        JLabel labelCodigoPostal_1 = new JLabel("C\u00F3digo Postal");
-        labelCodigoPostal_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelCodigoPostal_1.setBounds(38, 316, 86, 14);
-        panelActualizarCliente.add(labelCodigoPostal_1);
+        JLabel labelCodigoPostalActualizacion = new JLabel("C\u00F3digo Postal");
+        labelCodigoPostalActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCodigoPostalActualizacion.setBounds(38, 316, 86, 14);
+        panelActualizarCliente.add(labelCodigoPostalActualizacion);
         
         codigoPostalActualizacion = new JTextField();
         codigoPostalActualizacion.setColumns(10);
         codigoPostalActualizacion.setBounds(150, 313, 150, 20);
         panelActualizarCliente.add(codigoPostalActualizacion);
         
-        JLabel lblLocalidad_1 = new JLabel("Localidad");
-        lblLocalidad_1.setFont(new Font("Arial", Font.BOLD, 12));
-        lblLocalidad_1.setBounds(38, 358, 86, 14);
-        panelActualizarCliente.add(lblLocalidad_1);
+        JLabel lblLocalidadActualizacion = new JLabel("Localidad");
+        lblLocalidadActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        lblLocalidadActualizacion.setBounds(38, 358, 86, 14);
+        panelActualizarCliente.add(lblLocalidadActualizacion);
         
         localidadActualizacion = new JTextField();
         localidadActualizacion.setColumns(10);
         localidadActualizacion.setBounds(150, 355, 150, 20);
         panelActualizarCliente.add(localidadActualizacion);
         
-        JLabel lblProvincia_1 = new JLabel("Provincia");
-        lblProvincia_1.setFont(new Font("Arial", Font.BOLD, 12));
-        lblProvincia_1.setBounds(38, 399, 86, 14);
-        panelActualizarCliente.add(lblProvincia_1);
+        JLabel lblProvinciaActualizacion = new JLabel("Provincia");
+        lblProvinciaActualizacion.setFont(new Font("Arial", Font.BOLD, 12));
+        lblProvinciaActualizacion.setBounds(38, 399, 86, 14);
+        panelActualizarCliente.add(lblProvinciaActualizacion);
         
         provinciaActualizacion = new JTextField();
         provinciaActualizacion.setColumns(10);
@@ -426,20 +437,20 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.setBounds(50, 11, 399, 524);
         panelEliminacion.add(panelEliminacionCliente);
         
-        JLabel labelDni_1_1 = new JLabel("DNI");
-        labelDni_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelDni_1_1.setBounds(38, 27, 46, 14);
-        panelEliminacionCliente.add(labelDni_1_1);
+        JLabel labelDniEliminacion = new JLabel("DNI");
+        labelDniEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelDniEliminacion.setBounds(38, 27, 46, 14);
+        panelEliminacionCliente.add(labelDniEliminacion);
         
         dniEliminacion = new JTextField();
         dniEliminacion.setColumns(10);
         dniEliminacion.setBounds(150, 21, 150, 20);
         panelEliminacionCliente.add(dniEliminacion);
         
-        JLabel labelNombre_1_1 = new JLabel("Nombre");
-        labelNombre_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelNombre_1_1.setBounds(38, 64, 46, 14);
-        panelEliminacionCliente.add(labelNombre_1_1);
+        JLabel labelNombreEliminacion = new JLabel("Nombre");
+        labelNombreEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelNombreEliminacion.setBounds(38, 64, 46, 14);
+        panelEliminacionCliente.add(labelNombreEliminacion);
         
         nombreEliminacion = new JTextField();
         nombreEliminacion.setEditable(false);
@@ -447,10 +458,10 @@ public class Cliente extends JFrame {
         nombreEliminacion.setBounds(150, 58, 150, 20);
         panelEliminacionCliente.add(nombreEliminacion);
         
-        JLabel lbaelApellido_1_1 = new JLabel("Apellido");
-        lbaelApellido_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        lbaelApellido_1_1.setBounds(38, 104, 46, 14);
-        panelEliminacionCliente.add(lbaelApellido_1_1);
+        JLabel lbaelApellidoEliminacion = new JLabel("Apellido");
+        lbaelApellidoEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        lbaelApellidoEliminacion.setBounds(38, 104, 46, 14);
+        panelEliminacionCliente.add(lbaelApellidoEliminacion);
         
         apellidoEliminacion = new JTextField();
         apellidoEliminacion.setEditable(false);
@@ -458,10 +469,10 @@ public class Cliente extends JFrame {
         apellidoEliminacion.setBounds(150, 98, 150, 20);
         panelEliminacionCliente.add(apellidoEliminacion);
         
-        JLabel labelCalle_1_1 = new JLabel("Calle");
-        labelCalle_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelCalle_1_1.setBounds(38, 146, 46, 14);
-        panelEliminacionCliente.add(labelCalle_1_1);
+        JLabel labelCalleEliminacion = new JLabel("Calle");
+        labelCalleEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCalleEliminacion.setBounds(38, 146, 46, 14);
+        panelEliminacionCliente.add(labelCalleEliminacion);
         
         calleEliminacion = new JTextField();
         calleEliminacion.setEditable(false);
@@ -469,20 +480,20 @@ public class Cliente extends JFrame {
         calleEliminacion.setBounds(150, 140, 150, 20);
         panelEliminacionCliente.add(calleEliminacion);
         
-        JLabel labelNroCasa_1_1_1 = new JLabel("Nro. Casa");
-        labelNroCasa_1_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelNroCasa_1_1_1.setBounds(38, 194, 64, 14);
-        panelEliminacionCliente.add(labelNroCasa_1_1_1);
+        JLabel labelNroCasaEliminacion = new JLabel("Nro. Casa");
+        labelNroCasaEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelNroCasaEliminacion.setBounds(38, 194, 64, 14);
+        panelEliminacionCliente.add(labelNroCasaEliminacion);
         
-        JLabel labelPiso_1_1 = new JLabel("Piso");
-        labelPiso_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelPiso_1_1.setBounds(38, 237, 64, 14);
-        panelEliminacionCliente.add(labelPiso_1_1);
+        JLabel labelPisoEliminacion = new JLabel("Piso");
+        labelPisoEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelPisoEliminacion.setBounds(38, 237, 64, 14);
+        panelEliminacionCliente.add(labelPisoEliminacion);
         
-        JLabel labelDpto_1_1 = new JLabel("Dpto.");
-        labelDpto_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelDpto_1_1.setBounds(38, 277, 64, 14);
-        panelEliminacionCliente.add(labelDpto_1_1);
+        JLabel labelDptoEliminacion = new JLabel("Dpto.");
+        labelDptoEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelDptoEliminacion.setBounds(38, 277, 64, 14);
+        panelEliminacionCliente.add(labelDptoEliminacion);
         
         pisoEliminacion = new JTextField();
         pisoEliminacion.setEditable(false);
@@ -502,10 +513,10 @@ public class Cliente extends JFrame {
         departamentoEliminacion.setBounds(150, 274, 150, 20);
         panelEliminacionCliente.add(departamentoEliminacion);
         
-        JLabel labelCodigoPostal_1_1 = new JLabel("C\u00F3digo Postal");
-        labelCodigoPostal_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        labelCodigoPostal_1_1.setBounds(38, 316, 86, 14);
-        panelEliminacionCliente.add(labelCodigoPostal_1_1);
+        JLabel labelCodigoPostalEliminacion = new JLabel("C\u00F3digo Postal");
+        labelCodigoPostalEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCodigoPostalEliminacion.setBounds(38, 316, 86, 14);
+        panelEliminacionCliente.add(labelCodigoPostalEliminacion);
         
         codigoPostalEliminacion = new JTextField();
         codigoPostalEliminacion.setEditable(false);
@@ -513,10 +524,10 @@ public class Cliente extends JFrame {
         codigoPostalEliminacion.setBounds(150, 313, 150, 20);
         panelEliminacionCliente.add(codigoPostalEliminacion);
         
-        JLabel lblLocalidad_1_1 = new JLabel("Localidad");
-        lblLocalidad_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        lblLocalidad_1_1.setBounds(38, 358, 86, 14);
-        panelEliminacionCliente.add(lblLocalidad_1_1);
+        JLabel lblLocalidadEliminacion = new JLabel("Localidad");
+        lblLocalidadEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        lblLocalidadEliminacion.setBounds(38, 358, 86, 14);
+        panelEliminacionCliente.add(lblLocalidadEliminacion);
         
         localidadEliminacion = new JTextField();
         localidadEliminacion.setEditable(false);
@@ -524,10 +535,10 @@ public class Cliente extends JFrame {
         localidadEliminacion.setBounds(150, 355, 150, 20);
         panelEliminacionCliente.add(localidadEliminacion);
         
-        JLabel lblProvincia_1_1 = new JLabel("Provincia");
-        lblProvincia_1_1.setFont(new Font("Arial", Font.BOLD, 12));
-        lblProvincia_1_1.setBounds(38, 399, 86, 14);
-        panelEliminacionCliente.add(lblProvincia_1_1);
+        JLabel lblProvinciaEliminacion = new JLabel("Provincia");
+        lblProvinciaEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
+        lblProvinciaEliminacion.setBounds(38, 399, 86, 14);
+        panelEliminacionCliente.add(lblProvinciaEliminacion);
         
         provinciaEliminacion = new JTextField();
         provinciaEliminacion.setEditable(false);
@@ -563,29 +574,201 @@ public class Cliente extends JFrame {
         telefonoEliminacion.setBounds(150, 472, 150, 20);
         panelEliminacionCliente.add(telefonoEliminacion);
         
-        JPanel panelEliminacionRegistro = new JPanel();
-        panelEliminacionRegistro.setLayout(null);
-        panelEliminacionRegistro.setBorder(BorderFactory.createTitledBorder("ACCIONES"));
-        panelEliminacionRegistro.setBounds(50, 536, 399, 87);
-        panelEliminacion.add(panelEliminacionRegistro);
+        JPanel panelAccionesEliminacion = new JPanel();
+        panelAccionesEliminacion.setLayout(null);
+        panelAccionesEliminacion.setBorder(BorderFactory.createTitledBorder("ACCIONES"));
+        panelAccionesEliminacion.setBounds(50, 536, 399, 87);
+        panelEliminacion.add(panelAccionesEliminacion);
         
         eliminarCliente = new JButton("");
         eliminarCliente.setIcon(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\eliminar.png"));
         eliminarCliente.setBounds(90, 16, 48, 48);
-        panelEliminacionRegistro.add(eliminarCliente);
+        panelAccionesEliminacion.add(eliminarCliente);
         
         cancelarEliminacion = new JButton("");
         cancelarEliminacion.setIcon(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\salir.png"));
         cancelarEliminacion.setBounds(295, 16, 48, 48);
-        panelEliminacionRegistro.add(cancelarEliminacion);
+        panelAccionesEliminacion.add(cancelarEliminacion);
         
         JLabel labelEliminar = new JLabel("Eliminar");
         labelEliminar.setBounds(90, 62, 48, 14);
-        panelEliminacionRegistro.add(labelEliminar);
+        panelAccionesEliminacion.add(labelEliminar);
         
         JLabel labelSalirEliminacion = new JLabel("Salir");
         labelSalirEliminacion.setBounds(304, 62, 39, 14);
-        panelEliminacionRegistro.add(labelSalirEliminacion);
+        panelAccionesEliminacion.add(labelSalirEliminacion);
+        
+        
+        //Consulta de Cliente.
+        JPanel jPanelConsulta = new JPanel();
+        panelPestanias.addTab("CONSULTA",jPanelConsulta);
+        jPanelConsulta.setLayout(null);
+        
+        JPanel panelConsulta = new JPanel();
+        panelConsulta.setLayout(null);
+        panelConsulta.setBounds(0, 0, 517, 633);
+        jPanelConsulta.add(panelConsulta);
+        
+        JPanel panelConsultaCliente = new JPanel();
+        panelConsultaCliente.setLayout(null);
+        panelConsultaCliente.setBorder(BorderFactory.createTitledBorder("ELIMINAR CLIENTE"));
+        panelConsultaCliente.setBounds(50, 11, 399, 524);
+        panelConsulta.add(panelConsultaCliente);
+        
+        JLabel labelDniConsulta = new JLabel("DNI");
+        labelDniConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelDniConsulta.setBounds(38, 27, 46, 14);
+        panelConsultaCliente.add(labelDniConsulta);
+        
+        dniConsulta = new JTextField();
+        dniConsulta.setColumns(10);
+        dniConsulta.setBounds(150, 21, 150, 20);
+        panelConsultaCliente.add(dniConsulta);
+        
+        JLabel labelNombreConsulta = new JLabel("Nombre");
+        labelNombreConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelNombreConsulta.setBounds(38, 64, 46, 14);
+        panelConsultaCliente.add(labelNombreConsulta);
+        
+        nombreConsulta = new JTextField();
+        nombreConsulta.setEditable(false);
+        nombreConsulta.setColumns(10);
+        nombreConsulta.setBounds(150, 58, 150, 20);
+        panelConsultaCliente.add(nombreConsulta);
+        
+        JLabel lbaelApellidoConsulta = new JLabel("Apellido");
+        lbaelApellidoConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        lbaelApellidoConsulta.setBounds(38, 104, 46, 14);
+        panelConsultaCliente.add(lbaelApellidoConsulta);
+        
+        apellidoConsulta = new JTextField();
+        apellidoConsulta.setEditable(false);
+        apellidoConsulta.setColumns(10);
+        apellidoConsulta.setBounds(150, 98, 150, 20);
+        panelConsultaCliente.add(apellidoConsulta);
+        
+        JLabel labelCalleConsulta = new JLabel("Calle");
+        labelCalleConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCalleConsulta.setBounds(38, 146, 46, 14);
+        panelConsultaCliente.add(labelCalleConsulta);
+        
+        calleConsulta = new JTextField();
+        calleConsulta.setEditable(false);
+        calleConsulta.setColumns(10);
+        calleConsulta.setBounds(150, 140, 150, 20);
+        panelConsultaCliente.add(calleConsulta);
+        
+        JLabel labelNroCasaConsulta = new JLabel("Nro. Casa");
+        labelNroCasaConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelNroCasaConsulta.setBounds(38, 194, 64, 14);
+        panelConsultaCliente.add(labelNroCasaConsulta);
+        
+        JLabel labelPisoConsulta = new JLabel("Piso");
+        labelPisoConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelPisoConsulta.setBounds(38, 237, 64, 14);
+        panelConsultaCliente.add(labelPisoConsulta);
+        
+        JLabel labelDptoConsulta = new JLabel("Dpto.");
+        labelDptoConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelDptoConsulta.setBounds(38, 277, 64, 14);
+        panelConsultaCliente.add(labelDptoConsulta);
+        
+        pisoConsulta = new JTextField();
+        pisoConsulta.setEditable(false);
+        pisoConsulta.setColumns(10);
+        pisoConsulta.setBounds(150, 231, 150, 20);
+        panelConsultaCliente.add(pisoConsulta);
+        
+        nroCasaConsulta = new JTextField();
+        nroCasaConsulta.setEditable(false);
+        nroCasaConsulta.setColumns(10);
+        nroCasaConsulta.setBounds(150, 187, 150, 20);
+        panelConsultaCliente.add(nroCasaConsulta);
+        
+        departamentoConsulta = new JTextField();
+        departamentoConsulta.setEditable(false);
+        departamentoConsulta.setColumns(10);
+        departamentoConsulta.setBounds(150, 274, 150, 20);
+        panelConsultaCliente.add(departamentoConsulta);
+        
+        JLabel labelCodigoPostalConsulta = new JLabel("C\u00F3digo Postal");
+        labelCodigoPostalConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCodigoPostalConsulta.setBounds(38, 316, 86, 14);
+        panelConsultaCliente.add(labelCodigoPostalConsulta);
+        
+        codigoPostalConsulta = new JTextField();
+        codigoPostalConsulta.setEditable(false);
+        codigoPostalConsulta.setColumns(10);
+        codigoPostalConsulta.setBounds(150, 313, 150, 20);
+        panelConsultaCliente.add(codigoPostalConsulta);
+        
+        JLabel lblLocalidadConsulta = new JLabel("Localidad");
+        lblLocalidadConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        lblLocalidadConsulta.setBounds(38, 358, 86, 14);
+        panelConsultaCliente.add(lblLocalidadConsulta);
+        
+        localidadConsulta = new JTextField();
+        localidadConsulta.setEditable(false);
+        localidadConsulta.setColumns(10);
+        localidadConsulta.setBounds(150, 355, 150, 20);
+        panelConsultaCliente.add(localidadConsulta);
+        
+        JLabel lblProvinciaConsulta = new JLabel("Provincia");
+        lblProvinciaConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        lblProvinciaConsulta.setBounds(38, 399, 86, 14);
+        panelConsultaCliente.add(lblProvinciaConsulta);
+        
+        provinciaConsulta = new JTextField();
+        provinciaConsulta.setEditable(false);
+        provinciaConsulta.setColumns(10);
+        provinciaConsulta.setBounds(150, 396, 150, 20);
+        panelConsultaCliente.add(provinciaConsulta);
+        
+        JLabel labelCelularEliminacionConsulta = new JLabel("Celular");
+        labelCelularEliminacionConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelCelularEliminacionConsulta.setBounds(38, 434, 86, 14);
+        panelConsultaCliente.add(labelCelularEliminacionConsulta);
+        
+        celularConsulta = new JTextField();
+        celularConsulta.setEditable(false);
+        celularConsulta.setColumns(10);
+        celularConsulta.setBounds(150, 431, 150, 20);
+        panelConsultaCliente.add(celularConsulta);
+        
+        JLabel labelTelefonoEliminacionConsulta = new JLabel("Tel\u00E9fono");
+        labelTelefonoEliminacionConsulta.setFont(new Font("Arial", Font.BOLD, 12));
+        labelTelefonoEliminacionConsulta.setBounds(38, 475, 86, 14);
+        panelConsultaCliente.add(labelTelefonoEliminacionConsulta);
+        
+        telefonoConsulta = new JTextField();
+        telefonoConsulta.setEditable(false);
+        telefonoConsulta.setColumns(10);
+        telefonoConsulta.setBounds(150, 472, 150, 20);
+        panelConsultaCliente.add(telefonoConsulta);
+        
+        JPanel panelAccionesConsulta = new JPanel();
+        panelAccionesConsulta.setLayout(null);
+        panelAccionesConsulta.setBorder(BorderFactory.createTitledBorder("ACCIONES"));
+        panelAccionesConsulta.setBounds(50, 536, 399, 87);
+        panelConsulta.add(panelAccionesConsulta);
+        
+        buscarConsulta = new JButton("");
+        buscarConsulta.setIcon(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\buscarCliente.png"));
+        buscarConsulta.setBounds(90, 16, 48, 48);
+        panelAccionesConsulta.add(buscarConsulta);
+        
+        cancelarConsulta = new JButton("");
+        cancelarConsulta.setIcon(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\salir.png"));
+        cancelarConsulta.setBounds(295, 16, 48, 48);
+        panelAccionesConsulta.add(cancelarConsulta);
+        
+        JLabel labelEliminar_1 = new JLabel("Buscar");
+        labelEliminar_1.setBounds(90, 62, 48, 14);
+        panelAccionesConsulta.add(labelEliminar_1);
+        
+        JLabel labelSalirEliminacion_1 = new JLabel("Salir");
+        labelSalirEliminacion_1.setBounds(304, 62, 39, 14);
+        panelAccionesConsulta.add(labelSalirEliminacion_1);
 	
         
         
@@ -595,6 +778,8 @@ public class Cliente extends JFrame {
         ControlCliente cC=new ControlCliente(this);
         buscarClienteActualizacion.addActionListener(cC);
         buscarClienteEliminacion.addActionListener(cC); 
+        buscarConsulta .addActionListener(cC);
+        cancelarConsulta.addActionListener(cC);
     	actualizarCliente.addActionListener(cC);
     	cancelarActualizacion.addActionListener(cC); 
     	eliminarCliente.addActionListener(cC);
@@ -903,7 +1088,7 @@ public class Cliente extends JFrame {
 
 	public void setCelularActualizacion(String celularRegistro) {
 		this.celularActualizacion.setText(celularRegistro);
-		;
+		 
 	}
 
 	public String getTelefonoActualizacion() {
@@ -1013,7 +1198,7 @@ public class Cliente extends JFrame {
 
 	public void setCelularEliminacion(String celularRegistro) {
 		this.celularEliminacion.setText(celularRegistro);
-		;
+		 
 	}
 
 	public String getTelefonoEliminacion() {
@@ -1022,6 +1207,88 @@ public class Cliente extends JFrame {
 
 	public void setTelefonoEliminacion(String telefonoRegistro) {
 		this.telefonoEliminacion.setText(telefonoRegistro);
+	}
+	
+
+	// Setter y getters de consulta de cliente
+
+	public String getDniConsulta() {
+		return this.dniConsulta.getText();
+	}
+
+	public void setDniConsulta(String dniRegistro) {
+		this.dniConsulta.setText(dniRegistro);
+	}
+
+	 
+	public void setNombreConsulta(String nombreRegistro) {
+		this.nombreConsulta.setText(nombreRegistro);
+	}
+
+	 
+
+	public void setApellidoConsulta(String apellidoRegistro) {
+		this.apellidoConsulta.setText(apellidoRegistro);
+	}
+
+	 
+
+	public void setCalleConsulta(String calleRegistro) {
+		this.calleConsulta.setText(calleRegistro);
+	}
+
+	 
+
+	public void setPisoConsulta(String pisoRegistro) {
+		this.pisoConsulta.setText(pisoRegistro);
+	}
+
+	 
+
+	public void setNroCasaConsulta(String nroCasaRegistro) {
+		this.nroCasaConsulta.setText(nroCasaRegistro);
+	}
+
+	 
+
+	public void setDepartamentoConsulta(String departamentoRegistro) {
+		this.departamentoConsulta.setText(departamentoRegistro);
+	}
+
+	 
+
+	public void setCodigoPostalConsulta(String codigoPostalRegistro) {
+		this.codigoPostalConsulta.setText(codigoPostalRegistro);
+	}
+
+	 
+
+	public void setLocalidadConsulta(String localidadRegistro) {
+		this.localidadConsulta.setText(localidadRegistro);
+	}
+
+	 
+
+	public void setProvinciaConsulta(String provinciaRegistro) {
+		this.provinciaConsulta.setText(provinciaRegistro);
+	}
+
+	 
+	public void setCelularConsulta(String celularRegistro) {
+		this.celularConsulta.setText(celularRegistro);
+		 
+	}
+
+	public void setTelefonoConsulta(String telefonoRegistro) {
+		this.telefonoConsulta.setText(telefonoRegistro);
+	}
+	
+	public JButton getCancelarConsulta() {
+		return cancelarConsulta;
+	}
+
+	public JButton getBuscarConsulta() {
+		return buscarConsulta;
 	}
 	
 	//Getter JTextField 
@@ -1169,6 +1436,4 @@ public class Cliente extends JFrame {
 	public JTextField getJTextFieldTelefonoEliminacion() {
 		return telefonoEliminacion;
 	}
- 
-	
 }

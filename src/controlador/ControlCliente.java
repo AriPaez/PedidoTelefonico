@@ -66,6 +66,14 @@ public class ControlCliente extends KeyAdapter implements ActionListener {
 		{
 			aBMLCliente.buscarClienteEliminacion();
 		}
+		else if(botonElegido==cliente.getBuscarConsulta())
+		{
+			aBMLCliente.buscarClienteConsulta();
+		}
+		else if(botonElegido==cliente.getCancelarConsulta())
+		{
+			abrirVentanaEmpleado();
+		}
 		
 		
 	}
