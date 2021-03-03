@@ -291,7 +291,8 @@ BEGIN CATCH
 END CATCH
 
 --actualizar cliente
-CREATE PROCEDURE actualizarCliente(@nombre VARCHAR(20) ,
+ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
+		@nombre VARCHAR(20) ,
 		@apellido VARCHAR(20) ,
 		@calle VARCHAR(30) ,
 		@nroCasa INT ,
@@ -304,11 +305,23 @@ CREATE PROCEDURE actualizarCliente(@nombre VARCHAR(20) ,
 		@telefonoMovil VARCHAR(10) )
 		AS
 		BEGIN TRY
-			IF (@nombre ='' AND  @apellido ='' AND    @calle ='' AND   @nroCasa ='' AND   @piso ='' 
+			IF (@dniCliente='' AND @nombre ='' AND  @apellido ='' AND    @calle ='' AND   @nroCasa ='' AND   @piso ='' 
 			   AND @Depto ='' AND  @codigoPostal ='' AND    @localidad ='' 
 			   AND @provincia ='' AND   @telefonoMovil='')
 			BEGIN;
 				THROW 50000, 'ERROR. CAMPOS VACÍOS.', 1;
+			END;
+			ELSE IF (@dniCliente ='')
+			BEGIN;
+				THROW 50000, 'ERROR. DNI VACÍO.', 1;
+			END;
+			ELSE IF(@dniCliente LIKE '%[^0-9]%')
+			BEGIN;
+				THROW 50000, 'EL NÚMERO DE DNI DEL CLIENTE  DEBE SER ENTERO', 1;
+			END;
+			ELSE IF(LEN(@dniCliente )<>8)
+			BEGIN;
+				THROW 50000, 'EL NÚMERO DE DNI CLIENTE DEBE SER DE 8 DÍGITOS', 1;
 			END;
 			ELSE IF(@nombre='')
 			BEGIN;
@@ -407,7 +420,19 @@ CREATE PROCEDURE actualizarCliente(@nombre VARCHAR(20) ,
 				THROW 50000, 'ERROR. EL TELEFONO DOMICILIO DEBE DE 11 DIGÍTOS', 1;
 			END;
 			ELSE
-			 
+			UPDATE [dbo].[cliente]
+			   SET [nombre] =@nombre
+				  ,[apellido] =@apellido
+				  ,[calle] = @calle 
+				  ,[nroCasa] =@nroCasa
+				  ,[piso] = @piso
+				  ,[Depto] =@Depto
+				  ,[codigoPostal] =@codigoPostal
+				  ,[localidad] = @localidad
+				  ,[provincia] = @provincia
+				  ,[telefonoDomicilio] = @telefonoDomicilio
+				  ,[telefonoMovil] = @telefonoMovil
+			 WHERE dniCliente=@dniCliente
 		END TRY
 		BEGIN CATCH
 			DECLARE @mensajeDeError VARCHAR(100)
@@ -416,3 +441,4 @@ CREATE PROCEDURE actualizarCliente(@nombre VARCHAR(20) ,
 			THROW  50000,@mensajeDeError,@numeroDeerror; 
 		END CATCH
 
+--ELIMINAR CLIENTE.
