@@ -14,7 +14,11 @@ public class ControlCliente extends KeyAdapter implements ActionListener {
 
 	private Cliente cliente;
 	private ABMLCliente aBMLCliente;
-	
+	// Estas variables booleanas sirver para determinar que accion se ha realizado
+	// si es un registro, actualizacion o eliminacion.
+	private boolean registro = false;
+	private boolean actualizacion = false;
+
 	public ControlCliente(Cliente c)
 	{
 		aBMLCliente=new ABMLCliente(c);
@@ -27,13 +31,16 @@ public class ControlCliente extends KeyAdapter implements ActionListener {
 	 
 		Object botonElegido=e.getSource();
 		
+		
 		if(botonElegido==cliente.getRegistrarRegistro())
 		{
 			aBMLCliente.registrarCliente();
+			registro=true;
 		}
 		else if(botonElegido==cliente.getRegistrarActualizacion())
 		{
 			aBMLCliente.actualizarCliente();
+			actualizacion=true;
 		}
 		else if(botonElegido==cliente.getRegistrarEliminacion())
 		{
@@ -51,6 +58,14 @@ public class ControlCliente extends KeyAdapter implements ActionListener {
 		{
 			abrirVentanaEmpleado();
 		}
+		else if(botonElegido==cliente.buscarClienteActualizacion())
+		{
+			aBMLCliente. buscarClienteActualizacion();
+		}
+		else if(botonElegido==cliente.buscarClienteEliminacion())
+		{
+			aBMLCliente.buscarClienteEliminacion();
+		}
 		
 		
 	}
@@ -59,56 +74,112 @@ public class ControlCliente extends KeyAdapter implements ActionListener {
 	{
 		Object jTextFieldEscrito=e.getSource();
 	
-		if(jTextFieldEscrito==cliente.getJTextFieldDniRegistro())
+		 
+		if(registro)
 		{
-			cliente.getJTextFieldDniRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldNombreRegistro())
-		{
-			cliente.getJTextFieldNombreRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldApellidoRegistro())
-		{
-			cliente.getJTextFieldApellidoRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldPisoRegistro())
-		{
-			cliente.getJTextFieldPisoRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldCalleRegistro())
-		{
-			cliente.getJTextFieldCalleRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldNroCasaRegistro())
-		{
-			cliente.getJTextFieldNroCasaRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldDepartamentoRegistro())
-		{
-			cliente.getJTextFieldDepartamentoRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldCodigoPostalRegistro())
-		{
-			cliente.getJTextFieldCodigoPostalRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldLocalidadRegistro())
-		{
-			cliente.getJTextFieldLocalidadRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldProvinciaRegistro())
-		{
-			cliente.getJTextFieldProvinciaRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldTelefonoRegistro())
-		{
-			cliente.getJTextFieldTelefonoRegistro().setBackground(Color.WHITE);
-		}
-		else if(jTextFieldEscrito==cliente.getJTextFieldCelularRegistro())
-		{
-			cliente.getJTextFieldCelularRegistro().setBackground(Color.WHITE);
+			if(jTextFieldEscrito==cliente.getJTextFieldDniRegistro())
+			{
+				cliente.getJTextFieldDniRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldNombreRegistro())
+			{
+				cliente.getJTextFieldNombreRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldApellidoRegistro())
+			{
+				cliente.getJTextFieldApellidoRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldPisoRegistro())
+			{
+				cliente.getJTextFieldPisoRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldCalleRegistro())
+			{
+				cliente.getJTextFieldCalleRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldNroCasaRegistro())
+			{
+				cliente.getJTextFieldNroCasaRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldDepartamentoRegistro())
+			{
+				cliente.getJTextFieldDepartamentoRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldCodigoPostalRegistro())
+			{
+				cliente.getJTextFieldCodigoPostalRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldLocalidadRegistro())
+			{
+				cliente.getJTextFieldLocalidadRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldProvinciaRegistro())
+			{
+				cliente.getJTextFieldProvinciaRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldTelefonoRegistro())
+			{
+				cliente.getJTextFieldTelefonoRegistro().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldCelularRegistro())
+			{
+				cliente.getJTextFieldCelularRegistro().setBackground(Color.WHITE);
+			}
 		}
 		
-	 
+		if(actualizacion)
+		{
+		
+			if(jTextFieldEscrito==cliente.getJTextFieldDniActualizacion())
+			{
+				cliente.getJTextFieldDniActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldNombreActualizacion())
+			{
+				cliente.getJTextFieldNombreActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldApellidoActualizacion())
+			{
+				cliente.getJTextFieldApellidoActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldPisoActualizacion())
+			{
+				cliente.getJTextFieldPisoActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldCalleActualizacion())
+			{
+				cliente.getJTextFieldCalleActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldNroDeCasaActualizacion())
+			{
+				cliente.getJTextFieldNroDeCasaActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldDepartamentoActualizacion())
+			{
+				cliente.getJTextFieldDepartamentoActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldCodigoPostalActualizacion())
+			{
+				cliente.getJTextFieldCodigoPostalActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldLocalidadActualizacion())
+			{
+				cliente.getJTextFieldLocalidadActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldProvinciaActualizacion())
+			{
+				cliente.getJTextFieldProvinciaActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldTelefonoActualizacion())
+			{
+				cliente.getJTextFieldTelefonoActualizacion().setBackground(Color.WHITE);
+			}
+			else if(jTextFieldEscrito==cliente.getJTextFieldCelularActualizacion())
+			{
+				cliente.getJTextFieldCelularActualizacion().setBackground(Color.WHITE);
+			}
+		}
+		 
 		
 	}
 	

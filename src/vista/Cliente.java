@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -441,7 +442,7 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(labelNombre_1_1);
         
         nombreEliminacion = new JTextField();
-        nombreEliminacion.setEnabled(false);
+        nombreEliminacion.setEditable(false);
         nombreEliminacion.setColumns(10);
         nombreEliminacion.setBounds(150, 58, 150, 20);
         panelEliminacionCliente.add(nombreEliminacion);
@@ -452,7 +453,7 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(lbaelApellido_1_1);
         
         apellidoEliminacion = new JTextField();
-        apellidoEliminacion.setEnabled(false);
+        apellidoEliminacion.setEditable(false);
         apellidoEliminacion.setColumns(10);
         apellidoEliminacion.setBounds(150, 98, 150, 20);
         panelEliminacionCliente.add(apellidoEliminacion);
@@ -463,7 +464,7 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(labelCalle_1_1);
         
         calleEliminacion = new JTextField();
-        calleEliminacion.setEnabled(false);
+        calleEliminacion.setEditable(false);
         calleEliminacion.setColumns(10);
         calleEliminacion.setBounds(150, 140, 150, 20);
         panelEliminacionCliente.add(calleEliminacion);
@@ -484,19 +485,19 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(labelDpto_1_1);
         
         pisoEliminacion = new JTextField();
-        pisoEliminacion.setEnabled(false);
+        pisoEliminacion.setEditable(false);
         pisoEliminacion.setColumns(10);
         pisoEliminacion.setBounds(150, 231, 150, 20);
         panelEliminacionCliente.add(pisoEliminacion);
         
         nroDeCasaEliminacion = new JTextField();
-        nroDeCasaEliminacion.setEnabled(false);
+        nroDeCasaEliminacion.setEditable(false);
         nroDeCasaEliminacion.setColumns(10);
         nroDeCasaEliminacion.setBounds(150, 187, 150, 20);
         panelEliminacionCliente.add(nroDeCasaEliminacion);
         
         departamentoEliminacion = new JTextField();
-        departamentoEliminacion.setEnabled(false);
+        departamentoEliminacion.setEditable(false);
         departamentoEliminacion.setColumns(10);
         departamentoEliminacion.setBounds(150, 274, 150, 20);
         panelEliminacionCliente.add(departamentoEliminacion);
@@ -507,7 +508,7 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(labelCodigoPostal_1_1);
         
         codigoPostalEliminacion = new JTextField();
-        codigoPostalEliminacion.setEnabled(false);
+        codigoPostalEliminacion.setEditable(false);
         codigoPostalEliminacion.setColumns(10);
         codigoPostalEliminacion.setBounds(150, 313, 150, 20);
         panelEliminacionCliente.add(codigoPostalEliminacion);
@@ -518,7 +519,7 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(lblLocalidad_1_1);
         
         localidadEliminacion = new JTextField();
-        localidadEliminacion.setEnabled(false);
+        localidadEliminacion.setEditable(false);
         localidadEliminacion.setColumns(10);
         localidadEliminacion.setBounds(150, 355, 150, 20);
         panelEliminacionCliente.add(localidadEliminacion);
@@ -529,7 +530,7 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(lblProvincia_1_1);
         
         provinciaEliminacion = new JTextField();
-        provinciaEliminacion.setEnabled(false);
+        provinciaEliminacion.setEditable(false);
         provinciaEliminacion.setColumns(10);
         provinciaEliminacion.setBounds(150, 396, 150, 20);
         panelEliminacionCliente.add(provinciaEliminacion);
@@ -546,7 +547,7 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(labelCelularEliminacion);
         
         celularEliminacion = new JTextField();
-        celularEliminacion.setEnabled(false);
+        celularEliminacion.setEditable(false);
         celularEliminacion.setColumns(10);
         celularEliminacion.setBounds(150, 431, 150, 20);
         panelEliminacionCliente.add(celularEliminacion);
@@ -557,7 +558,7 @@ public class Cliente extends JFrame {
         panelEliminacionCliente.add(labelTelefonoEliminacion);
         
         telefonoEliminacion = new JTextField();
-        telefonoEliminacion.setEnabled(false);
+        telefonoEliminacion.setEditable(false);
         telefonoEliminacion.setColumns(10);
         telefonoEliminacion.setBounds(150, 472, 150, 20);
         panelEliminacionCliente.add(telefonoEliminacion);
@@ -592,11 +593,10 @@ public class Cliente extends JFrame {
         //Eventos de botones.
         
         ControlCliente cC=new ControlCliente(this);
-        
-        buscarClienteActualizacion.addActionListener(cC);	
+        buscarClienteActualizacion.addActionListener(cC);
+        buscarClienteEliminacion.addActionListener(cC); 
     	actualizarCliente.addActionListener(cC);
     	cancelarActualizacion.addActionListener(cC); 
-    	buscarClienteEliminacion.addActionListener(cC); 
     	eliminarCliente.addActionListener(cC);
     	cancelarEliminacion.addActionListener(cC);
     	registrarRegistro.addActionListener(cC);
@@ -615,6 +615,20 @@ public class Cliente extends JFrame {
 		provinciaRegistro.addKeyListener(cC);
 		celularRegistro.addKeyListener(cC);
 		telefonoRegistro.addKeyListener(cC);
+		
+		//Evento escritura en JTextField de actualizacion.
+		dniActualizacion.addKeyListener(cC);
+		nombreActualizacion.addKeyListener(cC);
+		apellidoActualizacion.addKeyListener(cC);
+		calleActualizacion.addKeyListener(cC);
+		pisoActualizacion.addKeyListener(cC);
+		nroDeCasaActualizacion.addKeyListener(cC);
+		departamentoActualizacion.addKeyListener(cC);
+		codigoPostalActualizacion.addKeyListener(cC);
+		localidadActualizacion.addKeyListener(cC);
+		provinciaActualizacion.addKeyListener(cC);
+		celularActualizacion.addKeyListener(cC);
+		telefonoActualizacion.addKeyListener(cC);
         
 	}
 	
@@ -740,7 +754,7 @@ public class Cliente extends JFrame {
 
 	public void setCelularRegistro(String celularRegistro) {
 		this.celularRegistro.setText(celularRegistro);
-		;
+		
 	}
 
 	public String getTelefonoRegistro() {
@@ -792,16 +806,47 @@ public class Cliente extends JFrame {
 		this.calleActualizacion.setText(calleRegistro);
 	}
 
-	public String getPisoActualizacion() {
-		return pisoActualizacion.getText();
+	public int getPisoActualizacion() {
+		
+		if (!this.pisoActualizacion.getText().equals("") && this.pisoActualizacion.getText().matches("[0-9]*"))
+		{
+			return Integer.parseInt(pisoActualizacion.getText());
+
+			
+		}
+		//Si retorna cero e poque no el JTextFiel esta vacio
+		if(this.pisoActualizacion.getText().equals(""))
+		{
+			return 0;
+		}
+		else//retorna -1 cuando se ingresa caracteres diferentes a [0-9]
+		{
+			return -1;
+		}
+ 
 	}
 
 	public void setPisoActualizacion(String pisoRegistro) {
 		this.pisoActualizacion.setText(pisoRegistro);
 	}
 
-	public String getNroCasaActualizacion() {
-		return nroDeCasaActualizacion.getText();
+	public int getNroCasaActualizacion() {
+
+		if (!this.nroDeCasaActualizacion.getText().equals("") && this.nroDeCasaActualizacion.getText().matches("[0-9]*"))
+		{
+			return Integer.parseInt(nroDeCasaActualizacion.getText());
+			
+		}
+		//Si retorna cero e poque no el JTextFiel esta vacio
+		if(this.nroDeCasaActualizacion.getText().equals(""))
+		{
+			return 0;
+		}
+		else//retorna -1 cuando se ingresa caracteres diferentes a [0-9]
+		{
+			return -1;
+		}
+		 
 	}
 
 	public void setNroCasaActualizacion(String nroCasaRegistro) {
@@ -848,7 +893,7 @@ public class Cliente extends JFrame {
 		return this.cancelarActualizacion;
 	}
 
-	public JButton BuscarClienteActualizacion() {
+	public JButton buscarClienteActualizacion() {
 		return this.buscarClienteActualizacion;
 	}
 
@@ -958,7 +1003,7 @@ public class Cliente extends JFrame {
 		return this.cancelarEliminacion;
 	}
 
-	public JButton BuscarClienteEliminacion() {
+	public JButton buscarClienteEliminacion() {
 		return this.buscarClienteEliminacion;
 	}
 
@@ -1041,7 +1086,7 @@ public class Cliente extends JFrame {
 		return pisoActualizacion;
 	}
 
-	public JTextField getNroDeCasaActualizacion() {
+	public JTextField getJTextFieldNroDeCasaActualizacion() {
 		return nroDeCasaActualizacion;
 	}
 
