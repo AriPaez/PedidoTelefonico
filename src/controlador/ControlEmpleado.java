@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import vista.ACercaDe;
 import vista.Cliente;
 import vista.Empleado;
 import vista.Producto;
@@ -52,11 +53,12 @@ public class ControlEmpleado implements ActionListener {
 		}
 		else if(botonElegido==empleado.getaCercaDe())
 		{
-			System.out.println("acerca de");
+			empleado.setEnabled(false);
+			ACercaDe aCD=new ACercaDe(empleado);
+			aCD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			aCD.setVisible(true);
 		}
-		 
-		
-
+		  
 	}
 
 }
