@@ -53,6 +53,8 @@ public class ControlEmpleado implements ActionListener {
 		}
 		else if(botonElegido==empleado.getaCercaDe())
 		{
+			//Se desactiva la ventana Empleado. La activacion de la misma
+			//se vuelve a ralizar en ControlACercaDe
 			empleado.setEnabled(false);
 			ACercaDe aCD=new ACercaDe(empleado);
 			aCD.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
