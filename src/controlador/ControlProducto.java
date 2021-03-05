@@ -40,8 +40,8 @@ public class ControlProducto implements ActionListener {
 			aBMLProducto.actualizarProducto();
 		}
 		else if(botonSeleccionado==producto.getBuscarProductoActualizacion())
-		{
-			aBMLProducto.buscarProducto();
+		{ 
+			aBMLProducto.buscarProductoActualizacion();
 		}
 		else if(botonSeleccionado==producto.getCancelarActualizacion())
 		{

@@ -622,7 +622,7 @@ public class Producto extends JFrame {
 	public float getUnidadMedidaRegistro() {
 		
 		 
-		if (!this.unidadMedidaRegistro.getText().equals("") && this.unidadMedidaRegistro.getText().matches("[0-9]*"))
+		if (!this.unidadMedidaRegistro.getText().equals("") && this.unidadMedidaRegistro.getText().matches("[0-9.]*"))
 		{
 			return Float.parseFloat(this.unidadMedidaRegistro.getText());
 		}
@@ -712,6 +712,10 @@ public class Producto extends JFrame {
 	 
 	//Getters y setter de actualizacion producto.
 	
+	public String getIdProductoActualizacion() {
+		return idProductoActualizacion.getText();
+	}
+	
 	public void setIdProductoActualizacion(String idProductoRegistro) {
 		this.idProductoActualizacion.setText(idProductoRegistro);
 	}
@@ -740,7 +744,7 @@ public class Producto extends JFrame {
 	public float getUnidadMedidaActualizacion() {
 		
 		 
-		if (!this.unidadMedidaActualizacion.getText().equals("") && this.unidadMedidaActualizacion.getText().matches("[0-9]*"))
+		if (!this.unidadMedidaActualizacion.getText().equals("") && this.unidadMedidaActualizacion.getText().matches("[0-9.]*"))
 		{
 			return Float.parseFloat(this.unidadMedidaActualizacion.getText());
 		}
@@ -782,12 +786,12 @@ public class Producto extends JFrame {
 	}
 
 
-	public void setCantidadRegistroActualizacion(String cantidadRegistro) {
+	public void setCantidadActualizacion(String cantidadRegistro) {
 		this.cantidadActualizacion.setText(cantidadRegistro);
 	}
 
 
-	public float getPrecioRegistroActualizacion() {
+	public float getPrecioActualizacion() {
 		
 		
 		if (!this.precioActualizacion.getText().equals("") && this.precioActualizacion.getText().matches("[0-9].*"))
@@ -812,6 +816,13 @@ public class Producto extends JFrame {
 	}
 
 
+	public void setCategoriaActualizacion(String categoria) {
+			 
+		categoriaActualizacion.setSelectedItem(categoria);
+				 
+	}
+
+	
 	public String getCategoriaActualizacion() {
 		return (String)categoriaActualizacion.getSelectedItem();
 	}

@@ -565,6 +565,136 @@ BEGIN CATCH
 			THROW  50000,@mensajeDeError,@numeroDeerror;
 END CATCH
 
+--buscar producto.
+ALTER PROCEDURE buscarProducto(@idProducto VARCHAR(5))
+AS
+BEGIN TRY
+			IF (@idProducto='')
+			BEGIN;
+				THROW 50000, 'ERROR. ID VACIO.', 1;
+			END; 
+			ELSE IF(@idProducto LIKE '%[^a-zA-Z0-9]%')
+			BEGIN;
+				THROW 50000, 'EL idProducto DEBE TENER EL FORMATO a-zA-Z0-9', 1;
+			END;
+			ELSE IF(LEN (@idProducto)<>4)
+			BEGIN;
+				THROW 50000, 'EL ID PRODUCTO DEBE SER DE 4 DÍGITOS', 1;
+			END;
+			ELSE IF NOT EXISTS (SELECT idProducto FROM producto WHERE idProducto=@idProducto)
+			BEGIN;
+				THROW 50000, 'ERROR. NO EXISTE EL PRODUCTO EN LA BBDD', 1;
+			END;
+			ELSE
+			BEGIN;
+				SELECT nombre,descripcion,unidadDeMedida,precio,cantidad,categoria
+				FROM producto 
+				WHERE idProducto=@idProducto
+			END;
+END TRY
+BEGIN CATCH
+		DECLARE @mensajeDeError VARCHAR(100)
+		DECLARE @numeroDeerror INT
+		SELECT @mensajeDeError=ERROR_MESSAGE(), @numeroDeerror=ERROR_NUMBER();
+		THROW  50000,@mensajeDeError,@numeroDeerror; 
+END CATCH
  
- 
+--actualizar producto
+CREATE PROCEDURE actualizarProducto(@idProducto VARCHAR(5),
+@nombre VARCHAR(20),@descripcion VARCHAR(30),@unidadDeMedida FLOAT,
+@precio FLOAT,@cantidad INT,@categoria VARCHAR(25))
+AS
+BEGIN TRY
+			IF (@idProducto='' AND @nombre='' AND  @descripcion='' 
+			AND @unidadDeMedida='' AND  @precio ='' AND   @cantidad ='' AND   @categoria ='')
+			BEGIN;
+				THROW 50000, 'ERROR. CAMPOS VACÍOS.', 1;
+			END;
+			ELSE IF (@idProducto ='')
+			BEGIN;
+				THROW 50000, 'ERROR. idProducto VACÍO.', 1;
+			END;
+			ELSE IF(@idProducto LIKE '%[^a-zA-Z0-9]%')
+			BEGIN;
+				THROW 50000, 'EL idProducto DEBE TENER EL FORMATO a-zA-Z0-9', 1;
+			END;
+			ELSE IF(LEN (@idProducto)<>4  )
+			BEGIN;
+				THROW 50000, 'EL ID PRODUCTO DEBE SER DE 4 DÍGITOS', 1;
+			END;
+			ELSE IF(@nombre='')
+			BEGIN;
+				THROW 50000, 'ERROR. CAMPO NOMBRE PRODUCTO ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@nombre LIKE '%[^a-zA-Z\s]%')
+			BEGIN;
+				THROW 50000, 'ERROR. EL NOMBRE DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE IF(@descripcion='')
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO  descripcionProducto ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@descripcion LIKE '%[^a-zA-Z\s]%')
+			BEGIN;
+				THROW 50000, 'ERROR. LA DESCRIPCION DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE IF(@unidadDeMedida=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO unidad de medida ESTA VACÍO', 1;
+			END;
+			ELSE IF(@unidadDeMedida=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. LA UNIDAD DE MEDIDA DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@precio=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO PRECIO ESTA VACÍO', 1;
+			END;
+			ELSE IF(@precio=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. EL PRECIO PRODUCTO DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@precio<=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO PRECIO DEBE SER MAYOR CERO', 1;
+			END;
+			ELSE IF(@cantidad=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO CANTIDAD ESTA VACÍO', 1;
+			END;
+			ELSE IF(@cantidad=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. LA CANTIDAD DE PRODUCTO DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@cantidad<=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO CANTIDAD DEBE SER MAYOR A CERO', 1;
+			END;
+			ELSE IF(@categoria='')
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO CANTEGORIA ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@categoria LIKE '%[^a-zA-Z\s]%')
+			BEGIN;
+				THROW 50000, 'ERROR. LA CATEGORIA DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE
+			BEGIN;
+		    UPDATE [dbo].[producto]
+		    SET[nombre] = @nombre
+			  ,[descripcion] = @descripcion
+			  ,[unidadDeMedida] = @unidadDeMedida
+			  ,[precio] = @precio
+			  ,[cantidad] = @cantidad
+			  ,[categoria] = @categoria
+		   WHERE idProducto=@idProducto
+			END;
+END TRY
+BEGIN CATCH
+			DECLARE @mensajeDeError VARCHAR(100)
+			DECLARE @numeroDeerror INT
+			SELECT @mensajeDeError=ERROR_MESSAGE(), @numeroDeerror=ERROR_NUMBER();
+			THROW  50000,@mensajeDeError,@numeroDeerror;
+END CATCH
+
  

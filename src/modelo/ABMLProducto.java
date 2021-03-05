@@ -1,11 +1,11 @@
 package modelo;
 
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import vista.Login;
 import vista.Producto;
 
 public class ABMLProducto {
@@ -40,6 +40,13 @@ public class ABMLProducto {
 			
 			JOptionPane.showMessageDialog(null,"REGISTRADO CON ÉXITO","BBDD", 1, null);
 			
+			producto.setIdProductoRegistro("");
+			producto.setNombreRegistro("");
+			producto.setDescripcionRegistro("");
+			producto.setUnidadMedidaRegistro("");
+			producto.setPrecioRegistro("");
+			producto.setCantidadRegistro("");
+			
 		}
 		catch (SQLException e)
 		{
@@ -50,13 +57,67 @@ public class ABMLProducto {
 	
 	public void actualizarProducto()
 	{
-		
+		try 
+		{
+			CallableStatement actualizarProducto=conexionBBDD.
+			getConexionBBDD().prepareCall("{call actualizarProducto(?,?,?,?,?,?,?)}");
+
+			actualizarProducto.setString(1,producto.getIdProductoActualizacion()); 
+			actualizarProducto.setString(2,producto.getNombreActualizacion());
+			actualizarProducto.setString(3,producto.getDescripcionActualizacion());
+			actualizarProducto.setFloat(4,producto.getUnidadMedidaActualizacion());
+			actualizarProducto.setFloat(5,producto.getPrecioActualizacion());
+			actualizarProducto.setInt(6,producto.getCantidadActualizacion());
+			actualizarProducto.setString(7,producto.getCategoriaActualizacion());
+			 
+			actualizarProducto.execute();
+			
+			JOptionPane.showMessageDialog(null,"ACTUALIZADO CON ÉXITO","BBDD", 1, null);
+			
+			producto.setIdProductoActualizacion("");
+			producto.setNombreActualizacion("");
+			producto.setDescripcionActualizacion("");
+			producto.setUnidadMedidaActualizacion("");
+			producto.setPrecioActualizacion("");
+			producto.setCantidadActualizacion("");
+			
+		}
+		catch (SQLException e)
+		{
+			JOptionPane.showMessageDialog(null,e.getMessage(),"BBDD", 1, null);
+			
+		}
 	}
 	
-	public void buscarProducto()
+	public void buscarProductoActualizacion()
 	{
+		ResultSet tabla=null;
 		
-		
+		try 
+		{
+			CallableStatement buscarProducto=conexionBBDD.
+			getConexionBBDD().prepareCall("{call buscarProducto(?)}");
+
+			buscarProducto.setString(1, producto.getIdProductoActualizacion());
+			tabla=buscarProducto.executeQuery();
+			
+			while(tabla.next())
+			{
+				producto.setNombreActualizacion(tabla.getString(1));
+				producto.setDescripcionActualizacion(tabla.getString(2));
+				producto.setUnidadMedidaActualizacion(tabla.getString(3));
+				producto.setPrecioActualizacion(tabla.getString(4));
+				producto.setCantidadActualizacion(tabla.getString(5));
+				producto.setCategoriaActualizacion(tabla.getString(6));
+			}
+			
+			
+		}
+		catch (SQLException e)
+		{
+			JOptionPane.showMessageDialog(null,e.getMessage(),"BBDD", 1, null);
+			
+		}
 	}
 	
 	
@@ -64,5 +125,7 @@ public class ABMLProducto {
 	{
 		
 	}
+	
+ 
 
 }
