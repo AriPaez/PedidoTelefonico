@@ -13,6 +13,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controlador.ControlProducto;
+import javax.swing.JComboBox;
 
 public class Producto extends JFrame {
 	
@@ -22,14 +23,12 @@ public class Producto extends JFrame {
 	private JTextField unidadMedidaRegistro;
 	private JTextField cantidadRegistro;
 	private JTextField precioRegistro;
-	private JTextField categoriaRegistro;
 	private JTextField idProductoActualizacion;
 	private JTextField nombreActualizacion;
 	private JTextField descripcionActualizacion;
 	private JTextField unidadMedidaActualizacion;
 	private JTextField cantidadActualizacion;
 	private JTextField precioActualizacion;
-	private JTextField categoriaActualizacion;
 	private JTextField idProductoEliminacion;
 	private JTextField nombreEliminacion;
 	private JTextField descripcionEliminacion;
@@ -52,8 +51,10 @@ public class Producto extends JFrame {
 	private JButton cancelarActualizacion; 
 	private JButton registrarActualizacion; 
 	private JButton buscarProductoActualizacion;
-	private JButton registrarRegistro;
+	private JButton registrarProducto;
 	private JButton cancelarRegistro;
+	private JComboBox categoriaRegistro;
+	private JComboBox categoriaActualizacion;
 	
 	public Producto() 
 	{
@@ -121,9 +122,9 @@ public class Producto extends JFrame {
 		descripcionRegistro.setBounds(150, 98, 150, 20);
 		panelRegistroProducto.add(descripcionRegistro);
 
-		JLabel labelUnidadMedidaRegistro = new JLabel("Ud. Medida");
+		JLabel labelUnidadMedidaRegistro = new JLabel("Ud. Medida (g)");
 		labelUnidadMedidaRegistro.setFont(new Font("Arial", Font.BOLD, 12));
-		labelUnidadMedidaRegistro.setBounds(38, 146, 64, 14);
+		labelUnidadMedidaRegistro.setBounds(38, 146, 86, 14);
 		panelRegistroProducto.add(labelUnidadMedidaRegistro);
 
 		unidadMedidaRegistro = new JTextField();
@@ -158,9 +159,13 @@ public class Producto extends JFrame {
 		labelCategoriaRegistro.setBounds(38, 277, 64, 14);
 		panelRegistroProducto.add(labelCategoriaRegistro);
 		
-		categoriaRegistro = new JTextField();
-		categoriaRegistro.setColumns(10);
-		categoriaRegistro.setBounds(150, 271, 150, 20);
+		categoriaRegistro = new JComboBox();
+		categoriaRegistro.addItem("Limpieza");
+		categoriaRegistro.addItem("Alimento");
+		categoriaRegistro.addItem("Juguetería");
+		categoriaRegistro.addItem("Ferreteria");
+		categoriaRegistro.addItem("Hardware");
+		categoriaRegistro.setBounds(150, 273, 150, 22);
 		panelRegistroProducto.add(categoriaRegistro);
 
 		// Botones registro cliente.
@@ -170,11 +175,11 @@ public class Producto extends JFrame {
 		panelAccionesRegistro.setBorder(BorderFactory.createTitledBorder("ACCIONES"));
 		panelAccionesRegistro.setLayout(null);
 
-		registrarRegistro = new JButton("");
-		registrarRegistro.setIcon(new ImageIcon(
+		registrarProducto = new JButton("");
+		registrarProducto.setIcon(new ImageIcon(
 		"C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\guardar.png"));
-		registrarRegistro.setBounds(90, 16, 48, 48);
-		panelAccionesRegistro.add(registrarRegistro);
+		registrarProducto.setBounds(90, 16, 48, 48);
+		panelAccionesRegistro.add(registrarProducto);
 
 		cancelarRegistro = new JButton("");
 		cancelarRegistro.setIcon(new ImageIcon(
@@ -239,9 +244,9 @@ public class Producto extends JFrame {
 		descripcionActualizacion.setBounds(150, 98, 150, 20);
 		panelActualizarProducto.add(descripcionActualizacion);
 		
-		JLabel labelUnidadMedidaActualizar = new JLabel("Ud. Medida");
+		JLabel labelUnidadMedidaActualizar = new JLabel("Ud. Medida(g)");
 		labelUnidadMedidaActualizar.setFont(new Font("Arial", Font.BOLD, 12));
-		labelUnidadMedidaActualizar.setBounds(38, 146, 64, 14);
+		labelUnidadMedidaActualizar.setBounds(38, 146, 77, 14);
 		panelActualizarProducto.add(labelUnidadMedidaActualizar);
 		
 		unidadMedidaActualizacion = new JTextField();
@@ -276,15 +281,19 @@ public class Producto extends JFrame {
 		labelCategoriaActualizar.setBounds(38, 277, 64, 14);
 		panelActualizarProducto.add(labelCategoriaActualizar);
 		
-		categoriaActualizacion = new JTextField();
-		categoriaActualizacion.setColumns(10);
-		categoriaActualizacion.setBounds(150, 271, 150, 20);
-		panelActualizarProducto.add(categoriaActualizacion);
-		
 		buscarProductoActualizacion = new JButton("");
 		buscarProductoActualizacion.setIcon(new ImageIcon("C:\\Users\\ArielPaez\\Desktop\\proyectosJava\\Pedidos Telef\u00F3nicos\\pedidoTelefonico\\src\\icon\\empleado\\buscar.png"));
 		buscarProductoActualizacion.setBounds(310, 23, 30, 20);
 		panelActualizarProducto.add(buscarProductoActualizacion);
+		
+		categoriaActualizacion = new JComboBox();
+		categoriaActualizacion.addItem("Limpieza");
+		categoriaActualizacion.addItem("Alimento");
+		categoriaActualizacion.addItem("Juguetería");
+		categoriaActualizacion.addItem("Ferreteria");
+		categoriaActualizacion.addItem("Hardware");
+		categoriaActualizacion.setBounds(150, 273, 150, 22);
+		panelActualizarProducto.add(categoriaActualizacion);
 		
 		JPanel panelAccionesActualizar = new JPanel();
 		panelAccionesActualizar.setLayout(null);
@@ -362,9 +371,9 @@ public class Producto extends JFrame {
 		descripcionEliminacion.setBounds(150, 98, 150, 20);
 		panelEliminarProducto.add(descripcionEliminacion);
 		
-		JLabel labelUnidadMedidaEliminacion = new JLabel("Ud. Medida");
+		JLabel labelUnidadMedidaEliminacion = new JLabel("Ud. Medida(g)");
 		labelUnidadMedidaEliminacion.setFont(new Font("Arial", Font.BOLD, 12));
-		labelUnidadMedidaEliminacion.setBounds(38, 146, 64, 14);
+		labelUnidadMedidaEliminacion.setBounds(38, 146, 77, 14);
 		panelEliminarProducto.add(labelUnidadMedidaEliminacion);
 		
 		unidadMedidaEliminacion = new JTextField();
@@ -489,9 +498,9 @@ public class Producto extends JFrame {
 		descripcionConsulta.setBounds(150, 98, 150, 20);
 		panelConsultaProducto.add(descripcionConsulta);
 		
-		JLabel labelUnidadMedidaConsulta = new JLabel("Ud. Medida");
+		JLabel labelUnidadMedidaConsulta = new JLabel("Ud. Medida(g)");
 		labelUnidadMedidaConsulta.setFont(new Font("Arial", Font.BOLD, 12));
-		labelUnidadMedidaConsulta.setBounds(38, 146, 64, 14);
+		labelUnidadMedidaConsulta.setBounds(38, 146, 86, 14);
 		panelConsultaProducto.add(labelUnidadMedidaConsulta);
 		
 		unidadMedidaConsulta = new JTextField();
@@ -572,7 +581,7 @@ public class Producto extends JFrame {
 		cancelarActualizacion.addActionListener(cP);
 		registrarActualizacion.addActionListener(cP);
 		buscarProductoActualizacion.addActionListener(cP);
-		registrarRegistro.addActionListener(cP);
+		registrarProducto.addActionListener(cP);
 		cancelarRegistro.addActionListener(cP);
 		
 		
@@ -664,7 +673,7 @@ public class Producto extends JFrame {
 	public float getPrecioRegistro() {
 		
 		
-		if (!this.precioRegistro.getText().equals("") && this.precioRegistro.getText().matches("[0-9]*"))
+		if (!this.precioRegistro.getText().equals("") && this.precioRegistro.getText().matches("[0-9].*"))
 		{
 			return Float.parseFloat(this.precioRegistro.getText());
 		}
@@ -687,16 +696,13 @@ public class Producto extends JFrame {
 
 
 	public String getCategoriaRegistro() {
-		return categoriaRegistro.getText();
+		return (String)categoriaRegistro.getSelectedItem();
 	}
 
 
-	public void setCategoriaRegistro(String categoriaRegistro) {
-		this.categoriaRegistro.setText(categoriaRegistro);
-	}
-
-	public JButton getRegistrarRegistro() {
-		return registrarRegistro;
+ 
+	public JButton getRegistrarProducto() {
+		return registrarProducto;
 	}
 
 	public JButton getCancelarRegistro() {
@@ -784,7 +790,7 @@ public class Producto extends JFrame {
 	public float getPrecioRegistroActualizacion() {
 		
 		
-		if (!this.precioActualizacion.getText().equals("") && this.precioActualizacion.getText().matches("[0-9]*"))
+		if (!this.precioActualizacion.getText().equals("") && this.precioActualizacion.getText().matches("[0-9].*"))
 		{
 			return Float.parseFloat(this.precioActualizacion.getText());
 		}
@@ -807,15 +813,11 @@ public class Producto extends JFrame {
 
 
 	public String getCategoriaActualizacion() {
-		return categoriaActualizacion.getText();
+		return (String)categoriaActualizacion.getSelectedItem();
 	}
 
 
-	public void setCategoriaActualizacion(String categoriaRegistro) {
-		this.categoriaActualizacion.setText(categoriaRegistro);
-	}
-
-	public JButton getRegistrarActualizacion() {
+	public JButton getActualizarProducto() {
 		return registrarActualizacion;
 	}
 
@@ -890,7 +892,7 @@ public class Producto extends JFrame {
 		return categoriaEliminacion.getText();
 	}
 
-	public JButton getRegistrarEliminacion() {
+	public JButton getEliminacionProducto() {
 		return eliminar;
 	}
 
@@ -962,12 +964,11 @@ public class Producto extends JFrame {
 		return categoriaConsulta.getText();
 	}
 
-	public JButton getConsulta() {
+	public JButton getConsultaProducto() {
 		return consultar;
 	}
 
 	public JButton getCancelarConsulta() {
 		return cancelarConsulta;
 	}
-	
 }

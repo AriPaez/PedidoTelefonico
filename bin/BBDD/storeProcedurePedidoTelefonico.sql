@@ -442,3 +442,123 @@ ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
 		END CATCH
 
 --ELIMINAR CLIENTE.
+CREATE PROCEDURE eliminarCliente(@dniCliente VARCHAR(8))
+AS
+BEGIN TRY
+		  DELETE FROM [dbo].[cliente]
+		  WHERE dniCliente=@dniCliente
+END TRY
+BEGIN CATCH
+			DECLARE @mensajeDeError VARCHAR(100)
+			DECLARE @numeroDeerror INT
+			SELECT @mensajeDeError=ERROR_MESSAGE(), @numeroDeerror=ERROR_NUMBER();
+			THROW  50000,@mensajeDeError,@numeroDeerror; 
+END CATCH
+
+--REGISTRAR PRODUCTO.
+ALTER PROCEDURE registrarProducto(@idProducto VARCHAR(4),
+@nombre VARCHAR(20),@descripcion VARCHAR(30),@unidadDeMedida FLOAT,
+@precio FLOAT,@cantidad INT,@categoria VARCHAR(25))
+AS
+BEGIN TRY
+			IF (@idProducto='' AND @nombre='' AND  @descripcion='' 
+			AND @unidadDeMedida='' AND  @precio ='' AND   @cantidad ='' AND   @categoria ='')
+			BEGIN;
+				THROW 50000, 'ERROR. CAMPOS VACÍOS.', 1;
+			END;
+			ELSE IF (@idProducto ='')
+			BEGIN;
+				THROW 50000, 'ERROR. idProducto VACÍO.', 1;
+			END;
+			ELSE IF(@idProducto LIKE '%[^a-zA-Z0-9]%')
+			BEGIN;
+				THROW 50000, 'EL idProducto DEBE TENER EL FORMATO a-zA-Z0-9', 1;
+			END;
+			ELSE IF(@idProducto LIKE '%^[a-zA-Z0-9]{4}$%')
+			BEGIN;
+				THROW 50000, 'EL ID PRODUCTO DEBE SER DE 4 DÍGITOS', 1;
+			END;
+			ELSE IF EXISTS (SELECT idProducto FROM producto WHERE idProducto=@idProducto)
+			BEGIN;
+				THROW 50000, 'ERROR. YA EXISTE EL PRODUCTO EN LA BBDD', 1;
+			END;
+			ELSE IF(@nombre='')
+			BEGIN;
+				THROW 50000, 'ERROR. CAMPO NOMBRE PRODUCTO ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@nombre LIKE '%[^a-zA-Z\s]')
+			BEGIN;
+				THROW 50000, 'ERROR. EL NOMBRE DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE IF(@descripcion='')
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO  descripcionProducto ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@descripcion LIKE '%[^a-zA-Z\s]')
+			BEGIN;
+				THROW 50000, 'ERROR. LA DESCRIPCION DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE IF(@unidadDeMedida=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO unidad de medida ESTA VACÍO', 1;
+			END;
+			ELSE IF(@unidadDeMedida=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. LA UNIDAD DE MEDIDA DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@precio=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO PRECIO ESTA VACÍO', 1;
+			END;
+			ELSE IF(@precio=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. EL PRECIO PRODUCTO DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@cantidad=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO CANTIDAD ESTA VACÍO', 1;
+			END;
+			ELSE IF(@cantidad=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. LA CANTIDAD DE PRODUCTO DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@categoria='')
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO CANTEGORIA ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@categoria LIKE '%[^a-zA-Z\s]')
+			BEGIN;
+				THROW 50000, 'ERROR. LA CATEGORIA DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE
+			BEGIN;
+			INSERT INTO [dbo].[producto]
+           ([idProducto]
+           ,[nombre]
+           ,[descripcion]
+           ,[unidadDeMedida]
+           ,[precio]
+           ,[cantidad]
+           ,[categoria])
+			VALUES
+           (@idProducto
+           ,@nombre
+           ,@descripcion 
+           ,@unidadDeMedida 
+           ,@precio
+           ,@cantidad
+           ,@categoria)
+			END;
+END TRY
+BEGIN CATCH
+			DECLARE @mensajeDeError VARCHAR(100)
+			DECLARE @numeroDeerror INT
+			SELECT @mensajeDeError=ERROR_MESSAGE(), @numeroDeerror=ERROR_NUMBER();
+			THROW  50000,@mensajeDeError,@numeroDeerror;
+END CATCH
+
+ 
+ 
+
+
+

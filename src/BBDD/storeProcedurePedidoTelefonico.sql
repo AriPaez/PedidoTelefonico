@@ -1,6 +1,6 @@
 --Iniciar sesion 
 
-ALTER PROCEDURE iniciarSesion(@dni VARCHAR(8),@contrasenia VARBINARY(MAX))
+ALTER PROCEDURE iniciarSesion(@dni VARCHAR(9),@contrasenia VARBINARY(MAX))
 AS
 BEGIN TRY
 
@@ -20,7 +20,7 @@ BEGIN TRY
 	BEGIN
 		RAISERROR('EL NÚMERO DE DNI DEBE SER DE 8 DÍGITOS',14,1)
 	END
-	ELSE IF (ISNUMERIC(@dni)=0)
+	ELSE IF (@dni LIKE '%[^0-9]%')
 	BEGIN
 		RAISERROR('ERROR. EL DNI DEBE SER ENTERO',14,1)
 	END
@@ -44,7 +44,7 @@ BEGIN CATCH
 END CATCH
 
 --registrar empleado
-ALTER PROCEDURE registrarEmpleado(@dni VARCHAR(8),@contrasenia VARBINARY(MAX))
+ALTER PROCEDURE registrarEmpleado(@dni VARCHAR(9),@contrasenia VARBINARY(MAX))
 AS
 BEGIN TRY
 
@@ -64,7 +64,7 @@ BEGIN TRY
 	BEGIN
 		RAISERROR('EL NÚMERO DE DNI DEBE SER DE 8 DÍGITOS',14,1)
 	END
-	ELSE IF(ISNUMERIC(@dni)=0)
+	ELSE IF(@dni LIKE '%[^0-9]%')
 	BEGIN
 		RAISERROR('EL NÚMERO DE DNI DEBE SER ENTERO',14,1)
 	END
@@ -88,19 +88,19 @@ END CATCH
 
 --registrar cliente
 
-ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(8) ,
-		@dniEmpleado VARCHAR(8) ,
+ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(9) ,
+		@dniEmpleado VARCHAR(9) ,
 		@nombre VARCHAR(20) ,
 		@apellido VARCHAR(20) ,
 		@calle VARCHAR(30) ,
 		@nroCasa INT ,
 		@piso INT,
 		@Depto VARCHAR(20) ,
-		@codigoPostal VARCHAR(5) ,
+		@codigoPostal VARCHAR(6) ,
 		@localidad VARCHAR(20) ,
 		@provincia VARCHAR(25) ,
-		@telefonoDomicilio VARCHAR(11),
-		@telefonoMovil VARCHAR(10) )
+		@telefonoDomicilio VARCHAR(12),
+		@telefonoMovil VARCHAR(11) )
 		AS
 		BEGIN TRY
 			IF (@dniCliente='' AND  @dniEmpleado='' AND   @nombre ='' AND  
@@ -126,7 +126,7 @@ ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(8) ,
 			BEGIN;
 				THROW 50000, 'ERROR. CAMPO NOMBRE VACÍO', 1;
 			END;
-			ELSE IF(@nombre LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@nombre LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. SU NOMBRE DEBE SER TIPO STRING', 1;
 			END;
@@ -134,7 +134,7 @@ ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(8) ,
 			BEGIN;
 				THROW 50000, 'ERROR. CAMPO APELLIDO VACÍO', 1;
 			END;
-			ELSE IF(@apellido LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@apellido LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. SU APELLIDO DEBE SER TIPO STRING', 1;
 			END;
@@ -142,7 +142,7 @@ ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(8) ,
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO CALLE ESTA VACÍO', 1;
 			END;
-			ELSE IF(@calle LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@calle LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. EL NOMBDE DE CALLE DEBE SER STRING', 1;
 			END;
@@ -166,7 +166,7 @@ ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(8) ,
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO DEPARTAMENTO ESTA VACÍO', 1;
 			END;
-			ELSE IF(@Depto LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@Depto LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. EL DEPARTAMENTO DEBE SER STRING', 1;
 			END;
@@ -186,7 +186,7 @@ ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(8) ,
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO LOCALIDAD ESTA VACÍO', 1;
 			END;
-			ELSE IF(@localidad LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@localidad LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. EL LOCALIDAD DEBE SER STRING', 1;
 			END;
@@ -194,7 +194,7 @@ ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(8) ,
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO PROVINCIA ESTA VACÍO', 1;
 			END;
-			ELSE IF(@provincia LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@provincia LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO PROVINCIA DEBE SER STRING', 1;
 			END;
@@ -256,7 +256,7 @@ ALTER PROCEDURE registrarCliente(@dniCliente VARCHAR(8) ,
 		END CATCH
 
 --Buscar cliente
-ALTER PROCEDURE buscarCliente(@dniCliente VARCHAR(8))
+ALTER PROCEDURE buscarCliente(@dniCliente VARCHAR(9))
 AS
 BEGIN TRY
 		IF (@dniCliente ='')
@@ -291,18 +291,18 @@ BEGIN CATCH
 END CATCH
 
 --actualizar cliente
-ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
+ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(9),
 		@nombre VARCHAR(20) ,
 		@apellido VARCHAR(20) ,
 		@calle VARCHAR(30) ,
 		@nroCasa INT ,
 		@piso INT,
 		@Depto VARCHAR(20) ,
-		@codigoPostal VARCHAR(5) ,
+		@codigoPostal VARCHAR(6) ,
 		@localidad VARCHAR(20) ,
 		@provincia VARCHAR(25) ,
-		@telefonoDomicilio VARCHAR(11),
-		@telefonoMovil VARCHAR(10) )
+		@telefonoDomicilio VARCHAR(12),
+		@telefonoMovil VARCHAR(11) )
 		AS
 		BEGIN TRY
 			IF (@dniCliente='' AND @nombre ='' AND  @apellido ='' AND    @calle ='' AND   @nroCasa ='' AND   @piso ='' 
@@ -327,7 +327,7 @@ ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
 			BEGIN;
 				THROW 50000, 'ERROR. CAMPO NOMBRE VACÍO', 1;
 			END;
-			ELSE IF(@nombre LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@nombre LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. SU NOMBRE DEBE SER TIPO STRING', 1;
 			END;
@@ -335,7 +335,7 @@ ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
 			BEGIN;
 				THROW 50000, 'ERROR. CAMPO APELLIDO VACÍO', 1;
 			END;
-			ELSE IF(@apellido LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@apellido LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. SU APELLIDO DEBE SER TIPO STRING', 1;
 			END;
@@ -343,7 +343,7 @@ ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO CALLE ESTA VACÍO', 1;
 			END;
-			ELSE IF(@calle LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@calle LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. EL NOMBDE DE CALLE DEBE SER STRING', 1;
 			END;
@@ -367,7 +367,7 @@ ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO DEPARTAMENTO ESTA VACÍO', 1;
 			END;
-			ELSE IF(@Depto LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@Depto LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. EL DEPARTAMENTO DEBE SER STRING', 1;
 			END;
@@ -387,7 +387,7 @@ ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO LOCALIDAD ESTA VACÍO', 1;
 			END;
-			ELSE IF(@localidad LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@localidad LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. EL LOCALIDAD DEBE SER STRING', 1;
 			END;
@@ -395,7 +395,7 @@ ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO PROVINCIA ESTA VACÍO', 1;
 			END;
-			ELSE IF(@provincia LIKE '%[^a-zA-Z\s]')
+			ELSE IF(@provincia LIKE '%[^a-zA-Z\s]%')
 			BEGIN;
 				THROW 50000, 'ERROR. EL CAMPO PROVINCIA DEBE SER STRING', 1;
 			END;
@@ -442,3 +442,129 @@ ALTER PROCEDURE actualizarCliente(@dniCliente VARCHAR(8),
 		END CATCH
 
 --ELIMINAR CLIENTE.
+CREATE PROCEDURE eliminarCliente(@dniCliente VARCHAR(8))
+AS
+BEGIN TRY
+		  DELETE FROM [dbo].[cliente]
+		  WHERE dniCliente=@dniCliente
+END TRY
+BEGIN CATCH
+			DECLARE @mensajeDeError VARCHAR(100)
+			DECLARE @numeroDeerror INT
+			SELECT @mensajeDeError=ERROR_MESSAGE(), @numeroDeerror=ERROR_NUMBER();
+			THROW  50000,@mensajeDeError,@numeroDeerror; 
+END CATCH
+
+--REGISTRAR PRODUCTO.
+ALTER PROCEDURE registrarProducto(@idProducto VARCHAR(5),
+@nombre VARCHAR(20),@descripcion VARCHAR(30),@unidadDeMedida FLOAT,
+@precio FLOAT,@cantidad INT,@categoria VARCHAR(25))
+AS
+BEGIN TRY
+			IF (@idProducto='' AND @nombre='' AND  @descripcion='' 
+			AND @unidadDeMedida='' AND  @precio ='' AND   @cantidad ='' AND   @categoria ='')
+			BEGIN;
+				THROW 50000, 'ERROR. CAMPOS VACÍOS.', 1;
+			END;
+			ELSE IF (@idProducto ='')
+			BEGIN;
+				THROW 50000, 'ERROR. idProducto VACÍO.', 1;
+			END;
+			ELSE IF(@idProducto LIKE '%[^a-zA-Z0-9]%')
+			BEGIN;
+				THROW 50000, 'EL idProducto DEBE TENER EL FORMATO a-zA-Z0-9', 1;
+			END;
+			ELSE IF(LEN (@idProducto)<>4  )
+			BEGIN;
+				THROW 50000, 'EL ID PRODUCTO DEBE SER DE 4 DÍGITOS', 1;
+			END;
+			ELSE IF EXISTS (SELECT idProducto FROM producto WHERE idProducto=@idProducto)
+			BEGIN;
+				THROW 50000, 'ERROR. YA EXISTE EL PRODUCTO EN LA BBDD', 1;
+			END;
+			ELSE IF(@nombre='')
+			BEGIN;
+				THROW 50000, 'ERROR. CAMPO NOMBRE PRODUCTO ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@nombre LIKE '%[^a-zA-Z\s]%')
+			BEGIN;
+				THROW 50000, 'ERROR. EL NOMBRE DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE IF(@descripcion='')
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO  descripcionProducto ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@descripcion LIKE '%[^a-zA-Z\s]%')
+			BEGIN;
+				THROW 50000, 'ERROR. LA DESCRIPCION DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE IF(@unidadDeMedida=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO unidad de medida ESTA VACÍO', 1;
+			END;
+			ELSE IF(@unidadDeMedida=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. LA UNIDAD DE MEDIDA DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@precio=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO PRECIO ESTA VACÍO', 1;
+			END;
+			ELSE IF(@precio=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. EL PRECIO PRODUCTO DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@precio<=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO PRECIO DEBE SER MAYOR CERO', 1;
+			END;
+			ELSE IF(@cantidad=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO CANTIDAD ESTA VACÍO', 1;
+			END;
+			ELSE IF(@cantidad=-1)
+			BEGIN;
+				THROW 50000, 'ERROR. LA CANTIDAD DE PRODUCTO DEBE SER UN VALOR NUMÉRICO', 1;
+			END;
+			ELSE IF(@cantidad<=0)
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO CANTIDAD DEBE SER MAYOR A CERO', 1;
+			END;
+			ELSE IF(@categoria='')
+			BEGIN;
+				THROW 50000, 'ERROR. EL CAMPO CANTEGORIA ESTÁ VACÍO', 1;
+			END;
+			ELSE IF(@categoria LIKE '%[^a-zA-Z\s]%')
+			BEGIN;
+				THROW 50000, 'ERROR. LA CATEGORIA DE PRODUCTO DEBE TENER EL FORMATO a-zA-Z', 1;
+			END;
+			ELSE
+			BEGIN;
+			INSERT INTO [dbo].[producto]
+           ([idProducto]
+           ,[nombre]
+           ,[descripcion]
+           ,[unidadDeMedida]
+           ,[precio]
+           ,[cantidad]
+           ,[categoria])
+			VALUES
+           (@idProducto
+           ,@nombre
+           ,@descripcion 
+           ,@unidadDeMedida 
+           ,ROUND(@precio,2)
+           ,@cantidad
+           ,@categoria)
+			END;
+END TRY
+BEGIN CATCH
+			DECLARE @mensajeDeError VARCHAR(100)
+			DECLARE @numeroDeerror INT
+			SELECT @mensajeDeError=ERROR_MESSAGE(), @numeroDeerror=ERROR_NUMBER();
+			THROW  50000,@mensajeDeError,@numeroDeerror;
+END CATCH
+
+ 
+ 
+ 

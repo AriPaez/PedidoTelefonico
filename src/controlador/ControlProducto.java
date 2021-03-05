@@ -27,47 +27,46 @@ public class ControlProducto implements ActionListener {
 	
 		Object botonSeleccionado=e.getSource();
 		
-		
-		if(botonSeleccionado==producto.getCancelarConsulta())
+		if(botonSeleccionado==producto.getRegistrarProducto())
 		{
-			abrirVentanaEmpleado();
-		}
-		else if(botonSeleccionado==producto.getConsulta())
-		{
-			
-		}
-		else if(botonSeleccionado==producto.getBuscarProductoEliminacion())
-		{
-			
-		}
-		else if(botonSeleccionado==producto.getRegistrarEliminacion())
-		{
-			
-		}
-		else if(botonSeleccionado==producto.getCancelarEliminacion())
-		{
-			abrirVentanaEmpleado();
-		}
-		else if(botonSeleccionado==producto.getCancelarActualizacion())
-		{
-			abrirVentanaEmpleado();
-		}
-		else if(botonSeleccionado==producto.getRegistrarActualizacion())
-		{
-		
-		}
-		else if(botonSeleccionado==producto.getBuscarProductoActualizacion())
-		{
-			
-		}
-		else if(botonSeleccionado==producto.getRegistrarRegistro())
-		{
-			
+			aBMLProducto.registrarProducto();
 		}
 		else if(botonSeleccionado==producto.getCancelarRegistro())
 		{
 			abrirVentanaEmpleado();
 		}
+		else if(botonSeleccionado==producto.getActualizarProducto())
+		{
+			aBMLProducto.actualizarProducto();
+		}
+		else if(botonSeleccionado==producto.getBuscarProductoActualizacion())
+		{
+			aBMLProducto.buscarProducto();
+		}
+		else if(botonSeleccionado==producto.getCancelarActualizacion())
+		{
+			abrirVentanaEmpleado();
+		}
+		else if(botonSeleccionado==producto.getCancelarConsulta())
+		{
+			abrirVentanaEmpleado();
+		}
+		else if(botonSeleccionado==producto.getEliminacionProducto())
+		{	 
+			aBMLProducto.eliminarProducto();
+		}
+		else if(botonSeleccionado==producto.getCancelarEliminacion())
+		{
+			abrirVentanaEmpleado();
+		}
+		else if(botonSeleccionado==producto.getConsultaProducto())
+		{
+			System.out.println("consutlar produrcto");
+		}
+		else if(botonSeleccionado==producto.getBuscarProductoEliminacion())
+		{
+			System.out.println("eliminar produrcto");
+		} 
 		
 		 
 	}

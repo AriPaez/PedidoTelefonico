@@ -31,6 +31,7 @@ CREATE TABLE producto
 	descripcion VARCHAR(30) NOT NULL,
 	unidadDeMedida FLOAT NOT NULL,
 	precio FLOAT NOT NULL,
+	cantidad INT NOT NULL,
 	categoria VARCHAR(20) NOT NULL
 )
 
