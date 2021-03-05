@@ -123,9 +123,87 @@ public class ABMLProducto {
 	
 	public void eliminarProducto()
 	{
-		
+		try 
+		{
+			CallableStatement eliminarProducto=conexionBBDD.
+			getConexionBBDD().prepareCall("{call eliminarProducto(?)}");
+
+			eliminarProducto.setString(1,producto.getIdProductoEliminacion());
+			 
+			eliminarProducto.execute();
+			
+			JOptionPane.showMessageDialog(null,"ELIMINADO EXITOSAMENTE","BBDD",2, null);
+			
+			
+		}
+		catch (SQLException e)
+		{
+			JOptionPane.showMessageDialog(null,e.getMessage(),"BBDD", 1, null);
+			
+		}
 	}
 	
  
+	public void buscarProductoEliminacion()
+	{
+		ResultSet tabla=null;
+		
+		try 
+		{
+			CallableStatement buscarProducto=conexionBBDD.
+			getConexionBBDD().prepareCall("{call buscarProducto(?)}");
+
+			buscarProducto.setString(1, producto.getIdProductoEliminacion());
+			tabla=buscarProducto.executeQuery();
+			
+			while(tabla.next())
+			{
+				producto.setNombreEliminacion(tabla.getString(1));
+				producto.setDescripcionEliminacion(tabla.getString(2));
+				producto.setUnidadMedidaEliminacion(tabla.getString(3));
+				producto.setPrecioEliminacion(tabla.getString(4));
+				producto.setCantidadEliminacion(tabla.getString(5));
+				producto.setCategoriaEliminacion(tabla.getString(6));
+			}
+			
+			
+		}
+		catch (SQLException e)
+		{
+			JOptionPane.showMessageDialog(null,e.getMessage(),"BBDD", 1, null);
+			
+		}
+	}
+	
+	public void buscarProductoConsulta()
+	{
+		ResultSet tabla=null;
+		
+		try 
+		{
+			CallableStatement buscarProducto=conexionBBDD.
+			getConexionBBDD().prepareCall("{call buscarProducto(?)}");
+
+			buscarProducto.setString(1, producto.getIdProductoConsulta());
+			tabla=buscarProducto.executeQuery();
+			
+			while(tabla.next())
+			{
+				producto.setNombreConsulta(tabla.getString(1));
+				producto.setDescripcionConsulta(tabla.getString(2));
+				producto.setUnidadMedidaConsulta(tabla.getString(3));
+				producto.setPrecioConsulta(tabla.getString(4));
+				producto.setCantidadConsulta(tabla.getString(5));
+				producto.setCategoriaConsulta(tabla.getString(6));
+			}
+			
+			
+		}
+		catch (SQLException e)
+		{
+			JOptionPane.showMessageDialog(null,e.getMessage(),"BBDD", 1, null);
+			
+		}
+	}
 
 }

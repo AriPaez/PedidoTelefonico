@@ -840,70 +840,41 @@ public class Producto extends JFrame {
 		return buscarProductoActualizacion;
 	}
 	 
-	//Getters y setter de eliminacion producto.
+	// setter de eliminacion producto.
+	 
+	public void setNombreEliminacion(String nombreRegistro) {
+		this.nombreEliminacion.setText(nombreRegistro);
+	}
+
+	public void setDescripcionEliminacion(String descripcionRegistro) {
+		this.descripcionEliminacion.setText(descripcionRegistro);
+	}
+
+	public void setUnidadMedidaEliminacion(String unidadMedidaRegistro) {
+		this.unidadMedidaEliminacion.setText(unidadMedidaRegistro);
+	}
+
+	public void setCantidadEliminacion(String cantidadRegistro) {
+		this.cantidadEliminacion.setText(cantidadRegistro);
+	}
+
+	public void setPrecioEliminacion(String precioRegistro) {
+		this.precioEliminacion.setText(precioRegistro);
+	}
+
+	public void setCategoriaEliminacion(String categoria) {
+
+		categoriaEliminacion.setText(categoria);
+
+	}
+	 
 	
-	public String getNombreEliminacion() {
-		return nombreEliminacion.getText();
+	public String getIdProductoEliminacion()
+	{
+		return this.idProductoEliminacion.getText();
 	}
-
-	public String getDescripcionEliminacion() {
-		return descripcionEliminacion.getText();
-	}
-
-	public float getUnidadMedidaEliminacion() {
-
-		if (!this.unidadMedidaEliminacion.getText().equals("")
-				&& this.unidadMedidaEliminacion.getText().matches("[0-9]*")) {
-			return Float.parseFloat(this.unidadMedidaEliminacion.getText());
-		}
-		// Si retorna cero e poque no el JTextFiel esta vacio
-		if (this.unidadMedidaEliminacion.getText().equals("")) {
-			return 0;
-		} else// retorna -1 cuando se ingresa caracteres diferentes a [0-9]
-		{
-			return -1;
-		}
-
-	}
-
 	
-	public int getCantidadEliminacion() {
-
-		if (!this.cantidadEliminacion.getText().equals("")
-				&& this.cantidadEliminacion.getText().matches("[0-9]*")) {
-			return Integer.parseInt(this.cantidadEliminacion.getText());
-		}
-		// Si retorna cero e poque no el JTextFiel esta vacio
-		if (this.cantidadEliminacion.getText().equals("")) {
-			return 0;
-		} else// retorna -1 cuando se ingresa caracteres diferentes a [0-9]
-		{
-			return -1;
-		}
-
-	}
-
-
-	public float getPrecioRegistroEliminacion() {
-
-		if (!this.precioEliminacion.getText().equals("") && this.precioEliminacion.getText().matches("[0-9]*")) {
-			return Float.parseFloat(this.precioEliminacion.getText());
-		}
-		// Si retorna cero e poque no el JTextFiel esta vacio
-		if (this.precioEliminacion.getText().equals("")) {
-			return 0;
-		} else// retorna -1 cuando se ingresa caracteres diferentes a [0-9]
-		{
-			return -1;
-		}
-
-	}
-
-	public String getCategoriaEliminacion() {
-		return categoriaEliminacion.getText();
-	}
-
-	public JButton getEliminacionProducto() {
+	public JButton getEliminacionProducto(){
 		return eliminar;
 	}
 
@@ -914,10 +885,13 @@ public class Producto extends JFrame {
 	public JButton getBuscarProductoEliminacion() {
 		return buscarProductoEliminacion;
 	}
-	
-	
+
 	//Getters y setter de consulta producto.
-	
+	 
+	public String getIdProductoConsulta() {
+		return idProductoConsulta.getText();
+	}
+
 	public String getNombreConsulta() {
 		return nombreConsulta.getText();
 	}
@@ -928,7 +902,7 @@ public class Producto extends JFrame {
 
 	public float getUnidadMedidaConsulta() {
 
-		if (!this.unidadMedidaConsulta.getText().equals("") && this.unidadMedidaConsulta.getText().matches("[0-9]*")) {
+		if (!this.unidadMedidaConsulta.getText().equals("") && this.unidadMedidaConsulta.getText().matches("[0-9.]*")) {
 			return Float.parseFloat(this.unidadMedidaConsulta.getText());
 		}
 		// Si retorna cero e poque no el JTextFiel esta vacio
@@ -943,7 +917,7 @@ public class Producto extends JFrame {
 
 	public int getCantidadConsulta() {
 
-		if (!this.cantidadConsulta.getText().equals("") && this.cantidadConsulta.getText().matches("[0-9]*")) {
+		if (!this.cantidadConsulta.getText().equals("") && this.cantidadConsulta.getText().matches("[0-9].*")) {
 			return Integer.parseInt(this.cantidadConsulta.getText());
 		}
 		// Si retorna cero e poque no el JTextFiel esta vacio
@@ -958,7 +932,7 @@ public class Producto extends JFrame {
 
 	public float getPrecioRegistroConsulta() {
 
-		if (!this.precioConsulta.getText().equals("") && this.precioConsulta.getText().matches("[0-9]*")) {
+		if (!this.precioConsulta.getText().equals("") && this.precioConsulta.getText().matches("[0-9].*")) {
 			return Float.parseFloat(this.precioConsulta.getText());
 		}
 		// Si retorna cero e poque no el JTextFiel esta vacio
@@ -971,6 +945,32 @@ public class Producto extends JFrame {
 
 	}
 
+	public void setNombreConsulta(String nombreRegistro) {
+		this.nombreConsulta.setText(nombreRegistro);
+	}
+
+	public void setDescripcionConsulta(String descripcionRegistro) {
+		this.descripcionConsulta.setText(descripcionRegistro);
+	}
+
+	public void setUnidadMedidaConsulta(String unidadMedidaRegistro) {
+		this.unidadMedidaConsulta.setText(unidadMedidaRegistro);
+	}
+
+	public void setCantidadConsulta(String cantidadRegistro) {
+		this.cantidadConsulta.setText(cantidadRegistro);
+	}
+
+	public void setPrecioConsulta(String precioRegistro) {
+		this.precioConsulta.setText(precioRegistro);
+	}
+
+	public void setCategoriaConsulta(String categoria) {
+
+		categoriaConsulta.setText(categoria);
+
+	}
+	  
 	public String getCategoriaConsulta() {
 		return categoriaConsulta.getText();
 	}

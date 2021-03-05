@@ -61,11 +61,11 @@ public class ControlProducto implements ActionListener {
 		}
 		else if(botonSeleccionado==producto.getConsultaProducto())
 		{
-			System.out.println("consutlar produrcto");
+			aBMLProducto.buscarProductoConsulta();
 		}
 		else if(botonSeleccionado==producto.getBuscarProductoEliminacion())
 		{
-			System.out.println("eliminar produrcto");
+			aBMLProducto.buscarProductoEliminacion();
 		} 
 		
 		 
