@@ -697,4 +697,31 @@ BEGIN CATCH
 			THROW  50000,@mensajeDeError,@numeroDeerror;
 END CATCH
 
- 
+--elimnar producto
+CREATE PROCEDURE eliminarProducto(@idProducto VARCHAR(5))
+AS
+BEGIN TRY
+			 
+			IF (@idProducto ='')
+			BEGIN;
+				THROW 50000, 'ERROR. idProducto VACÍO.', 1;
+			END;
+			ELSE IF(@idProducto LIKE '%[^a-zA-Z0-9]%')
+			BEGIN;
+				THROW 50000, 'EL idProducto DEBE TENER EL FORMATO a-zA-Z0-9', 1;
+			END;
+			ELSE IF(LEN (@idProducto)<>4  )
+			BEGIN;
+				THROW 50000, 'EL ID PRODUCTO DEBE SER DE 4 DÍGITOS', 1;
+			END;
+			BEGIN;
+				DELETE FROM [dbo].[producto]
+				WHERE idProducto=@idProducto
+			END;    
+END TRY
+BEGIN CATCH
+			DECLARE @mensajeDeError VARCHAR(100)
+			DECLARE @numeroDeerror INT
+			SELECT @mensajeDeError=ERROR_MESSAGE(), @numeroDeerror=ERROR_NUMBER();
+			THROW  50000,@mensajeDeError,@numeroDeerror;
+END CATCH

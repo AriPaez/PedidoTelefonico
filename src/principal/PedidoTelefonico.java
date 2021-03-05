@@ -2,13 +2,13 @@ package principal;
 
 import javax.swing.JFrame;
 
-import vista.Login;
+import vista.Empleado;
 
 public class PedidoTelefonico {
 
 	public static void main(String[] args) {
 		
-		JFrame l=new Login();
+		JFrame l=new Empleado();
 		l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		l.setVisible(true);
 		 

@@ -69,7 +69,7 @@ public class Empleado extends JFrame {
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(314, 11, 169, 144);
+		separator.setBounds(316, 11, 169, 144);
 		panelMenuPrincipal.add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -103,24 +103,24 @@ public class Empleado extends JFrame {
 		panelMenuPrincipal.add(backup);
 		
 		JLabel labelProducto = new JLabel("PRODUCTO");
-		labelProducto.setFont(new Font("Arial", Font.BOLD, 15));
-		labelProducto.setBounds(44, 134, 94, 14);
+		labelProducto.setFont(new Font("Arial", Font.BOLD, 12));
+		labelProducto.setBounds(54, 134, 74, 14);
 		panelMenuPrincipal.add(labelProducto);
 		
 		JLabel labelCliente = new JLabel("CLIENTE");
-		labelCliente.setFont(new Font("Arial", Font.BOLD, 15));
-		labelCliente.setBounds(211, 134, 79, 14);
+		labelCliente.setFont(new Font("Arial", Font.BOLD, 12));
+		labelCliente.setBounds(216, 134, 55, 14);
 		panelMenuPrincipal.add(labelCliente);
 		
 		JLabel labelPedido = new JLabel("PEDIDO");
-		labelPedido.setFont(new Font("Arial", Font.BOLD, 15));
-		labelPedido.setBounds(376, 134, 69, 14);
+		labelPedido.setFont(new Font("Arial", Font.BOLD, 12));
+		labelPedido.setBounds(385, 134, 55, 14);
 		panelMenuPrincipal.add(labelPedido);
 		
-		JLabel labelBackup = new JLabel("BACKUP");
-		labelBackup.setFont(new Font("Arial", Font.BOLD, 15));
-		labelBackup.setBounds(525, 134, 69, 14);
-		panelMenuPrincipal.add(labelBackup);
+		JLabel labelBackupYRestore = new JLabel("BACKUP Y RESTORE");
+		labelBackupYRestore.setFont(new Font("Arial", Font.BOLD, 12));
+		labelBackupYRestore.setBounds(493, 134, 125, 14);
+		panelMenuPrincipal.add(labelBackupYRestore);
 		
 		menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 138, 22);

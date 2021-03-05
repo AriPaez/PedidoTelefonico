@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import vista.ACercaDe;
+import vista.BackupRestore;
 import vista.Cliente;
 import vista.Empleado;
 import vista.Producto;
@@ -45,7 +46,10 @@ public class ControlEmpleado implements ActionListener {
 		}
 		else if(botonElegido==empleado.getBackup())
 		{
-			System.out.println("backup");
+			empleado.dispose();
+			BackupRestore bR=new BackupRestore();
+			bR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			bR.setVisible(true);
 		}
 		else if(botonElegido==empleado.getContrasenia())
 		{
